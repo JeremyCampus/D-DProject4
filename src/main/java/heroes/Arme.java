@@ -1,31 +1,13 @@
 package main.java.heroes;
 
 
-class Arme{
+class Arme extends AttackItem{
 
-	protected String nameWeapon = "None";
-	protected int weaponAttackLevel = 1;
+	protected String type = "Arme";
 
 	public Arme() {
 
 	}
 
 
-	public String getNameWeapon(){
-		return nameWeapon;
-	}
-
-	public int getWeaponAttackLevel(){
-		return weaponAttackLevel;
-	}
-
-	
-
-	public void setNameWeapon(String newNom){
-		nameWeapon = newNom;
-	}
-
-	public void setWeaponAttackLevel(int newWeaponAttackLevel){
-		weaponAttackLevel = newWeaponAttackLevel;
-	}
 }

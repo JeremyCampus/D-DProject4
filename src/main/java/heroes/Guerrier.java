@@ -7,22 +7,22 @@ import java.util.List;
 
 class Guerrier extends Character{
 	static List<Arme> inventory = new ArrayList<Arme>();	
-	protected Arme monArme = new Arme();
-	protected int damages =  strength + monArme.getWeaponAttackLevel();
+	protected Arme myAttackItem = new Arme();
+	protected int damages =  FA + myAttackItem.getItemAttackLevel();
 	protected boolean shield = false;
 	protected String metier = "Guerrier";
 	
 	
 	public Guerrier() {
 		super();
-		// inventory.add(monArme);
+		// inventory.add(myAttackItem);
 	}
 
 
 	public Guerrier(String myName) {
 		super();
 		name = myName;
-		// inventory.add(monArme);
+		// inventory.add(myAttackItem);
 	}
 
 
@@ -30,15 +30,15 @@ class Guerrier extends Character{
 		setName(myName);
 		setImage(newImage);
 		setLife(newLife);
-		setStrength(newStrenght);
-		// inventory.add(monArme);
+		setFA(newStrenght);
+		// inventory.add(myAttackItem);
 		mettreAJour();
 	}
 	
 	
 		
 	public void mettreAJour(){
-		damages = strength + monArme.getWeaponAttackLevel();
+		damages = FA + myAttackItem.getItemAttackLevel();
 	}
 
 
@@ -47,20 +47,6 @@ class Guerrier extends Character{
 		shield = status;
 	}
 
-	public void modifier() {
-		super.modifier();
-		Scanner sc = new Scanner(System.in);
-
-		System.out.println("Un bouclier ? ");
-		System.out.println("Oui = 1");
-		int str1 = sc.nextInt();
-		if(str1==1){
-			setShield(true);
-		}else{
-			setShield(false);
-		}
-		System.out.println("Votre bouclier est : " + shield);
-	}
 
 	public void attaquer() {
 		System.out.println("Vous attaquez votre ennemi.");
@@ -73,7 +59,7 @@ class Guerrier extends Character{
 		+"\nYour Profession : " + metier 
 		+ "\nYour Image : " + image 
 		+"\nYour Life : " + life +" --- "
-		 +"\nYour weapon is " + monArme.getNameWeapon() + " who deliver " + monArme.getWeaponAttackLevel() + " damages."
+		 +"\nYour weapon is " + myAttackItem.getNameItemAttack() + " who deliver " + myAttackItem.getItemAttackLevel() + " damages."
 		 +"\nYour shield : " + shield
 		 +"\nYour inventory has " + inventory.size() + " Weapons."	
 		 +"\n"
@@ -88,7 +74,7 @@ class Guerrier extends Character{
 	// 	System.out.println("Your Life : " + life);
 	// 	System.out.println("Your strength : " + strength);
 	// 	System.out.println("---");
-	// 	System.out.println("Your weapon is " + monArme.getNameWeapon() + " who deliver " + monArme.getWeaponAttackLevel() + " damages.");
+	// 	System.out.println("Your weapon is " + myAttackItem.getNameItemAttack() + " who deliver " + myAttackItem.getItemAttackLevel() + " damages.");
 	// 	System.out.println("Your shield : " + shield);
 	// 	System.out.println("Your inventory has " + inventory.size() + " Weapons.");		
 	// 	System.out.println("");
@@ -99,16 +85,16 @@ class Guerrier extends Character{
 	public void ajouterArmeSpell(){
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Une arme ? ");
-		monArme = new Arme();
+		myAttackItem = new Arme();
 
 		System.out.println("Son nom : ");
 		String str1 = sc.nextLine();
-		monArme.setNameWeapon(str1);
+		myAttackItem.setNameItemAttack(str1);
 
 		System.out.println("Son niveau de puissance : ");
 		int str2 = sc.nextInt();
-		monArme.setWeaponAttackLevel(str2);
-		inventory.add(monArme);
+		myAttackItem.setItemAttackLevel(str2);
+		inventory.add(myAttackItem);
 	}
 
 	public static void clearZone()
@@ -130,11 +116,9 @@ class Guerrier extends Character{
 				System.out.println("_____________________________________________________________________");
 				System.out.println("---");
 				System.out.println("Afficher l'inventaire ? = 1");
-				System.out.println("Creer une arme pour se battre et le noter dans l'inventaire ? = 2");
-				System.out.println("Afficher l'arme actuelle pour se battre ? = 3");
-				System.out.println("Choisir l'arme pour se battre ? = 4");
-				System.out.println("Supprimer un objet de l'inventaire ? = 5");
-				System.out.println("Quitter = 6");
+				System.out.println("Afficher l'arme actuelle pour se battre ? = 2");
+				System.out.println("Choisir l'arme pour se battre ? = 3");
+				System.out.println("Quitter = 4");
 				System.out.println("---");
 				System.out.println("");
 				System.out.println("");
@@ -150,20 +134,14 @@ class Guerrier extends Character{
 				{
 					case "1":
 						afficherInventory();
-						break;        
+						break;            
 					case "2":
-						ajouterArmeSpell();			  
-						break;        
-					case "3":
-						System.out.println(getName() + " utilise actuellement l'arme : " + monArme.getNameWeapon());
+						System.out.println(getName() + " utilise actuellement l'arme : " + myAttackItem.getNameItemAttack());
 						break;  
-					case "4":
+					case "3":
 						selectionnerArme();
-						break;       
-					case "5":
-						supprimerArme();
-						break;   	
-					case "6":
+						break;        	
+					case "4":
 						quitter = true;
 						break;   						  
 					default:
@@ -182,11 +160,11 @@ class Guerrier extends Character{
 		for(int i = 0; i < inventory.size(); i++){
 			System.out.println("");
 			System.out.println("");
-			System.out.println("Voici l'arme : " + inventory.get(i).getNameWeapon() + " | Numero : " + i);
-			System.out.println("Voici sa Puissance : " + inventory.get(i).getWeaponAttackLevel());;
+			System.out.println("Voici l'arme : " + inventory.get(i).getNameItemAttack() + " | Numero : " + i);
+			System.out.println("Voici sa Puissance : " + inventory.get(i).getItemAttackLevel());;
 		}	
 
-		// System.out.println("Your weapon is " + monArme.getNameWeapon() + " who deliver " + monArme.getWeaponAttackLevel() + " damages.");
+		// System.out.println("Your weapon is " + myAttackItem.getNameItemAttack() + " who deliver " + myAttackItem.getItemAttackLevel() + " damages.");
 
 	}
 
@@ -198,8 +176,8 @@ class Guerrier extends Character{
 		System.out.println("                     (Indiquez son numero)");
 		int str2 = sc.nextInt();
 		sc.nextLine();
-		monArme= inventory.get(str2);
-		System.out.println(getName() + " utilise actuellement l'arme : " + monArme.getNameWeapon());
+		myAttackItem= inventory.get(str2);
+		System.out.println(getName() + " utilise actuellement l'arme : " + myAttackItem.getNameItemAttack());
 	}
 
 	public void supprimerArme()

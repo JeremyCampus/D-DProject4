@@ -140,7 +140,7 @@ public static void gestionDuHero(int numHero){
 				System.out.println(listeHeroes.get(numHero));			  
 				break;        
 			case "2":
-				listeHeroes.get(numHero).modifier();			  
+//				listeHeroes.get(numHero).modifier();			  
 				break;        
 			case "3":
 				listeHeroes.get(numHero).afficherInventory();			  
@@ -152,7 +152,7 @@ public static void gestionDuHero(int numHero){
 				listeHeroes.get(numHero).ajouterArmeSpell();			  
 				break;        
 			case "6":
-				listeHeroes.get(numHero).attaquer();			  
+//				listeHeroes.get(numHero).attaquer();			  
 				break; 
 			case "7":
 				System.out.println("Etes vous sur ?");
