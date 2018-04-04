@@ -7,6 +7,7 @@ import java.util.List;
 import main.java.heroes.perso.*;
 import main.java.heroes.perso.Character;
 import main.java.heroes.enemy.*;
+import main.java.heroes.supriseBoxes.*;
 
 public class Dedale {
 
@@ -155,13 +156,13 @@ public void gestionInventory(){
 
 		String newImage ="X";
 
-		int newLife =1;
-		System.out.println("Quel est votre life ?");
-		newLife = sc.nextInt();
+		int newLife =999;
+//		System.out.println("Quel est votre life ?");
+//		newLife = sc.nextInt();
 
 		int newStrenght = 1;
-		System.out.println("Quel est votre Strenght ?");
-		newStrenght = sc.nextInt();	
+//		System.out.println("Quel est votre Strenght ?");
+//		newStrenght = sc.nextInt();	
 
 		if(vocation == 1){
 			myHero = new Guerrier(myName, newImage, newLife, newStrenght);
@@ -185,7 +186,7 @@ public void gestionInventory(){
 	public static void generateDonjon() {
 		setmySquare(0);
 		
-		for(int i = 0; i < limitSquares+1; i++){
+		for(int i = 0; i <= limitSquares; i++){
 			Event myEvent = new Event();
 			monDonjon.add(myEvent);
 		}
@@ -212,10 +213,6 @@ public void gestionInventory(){
 		myTrolls[4] = new Troll(20);
 		myTrolls[5] = new Troll(15);
 		
-//		for(int i = 6; i < 59; i++){
-//			myTrolls[i] = new Troll(15);
-//		}
-		
 		mySorcerers[0] = new Sorcerer(75);
 		mySorcerers[1] = new Sorcerer(50);
 		mySorcerers[2] = new Sorcerer(25);
@@ -232,8 +229,9 @@ public void gestionInventory(){
 			int limiteBreak = 0;
 			do {
 				limiteBreak++;
-				int localisation =  1 + (int)(Math.random() * ((limitSquares - 1) + 1));
-				System.out.println("TEST" + Dedale.monDonjon.get(localisation));
+				int localisation =  (int)(Math.random() * ((limitSquares - 1) + 1));
+				System.out.println(localisation);
+				System.out.println("TEST " +localisation + " " + Dedale.monDonjon.get(localisation) + " ");
 
 				if(Dedale.monDonjon.get(localisation) instanceof Event) {
 					Dedale.monDonjon.set(localisation, myTrolls[i]);
@@ -247,7 +245,7 @@ public void gestionInventory(){
 			int limiteBreak = 0;
 			do {
 				limiteBreak++;
-				int localisation =  1 + (int)(Math.random() * ((limitSquares - 1) + 1));
+				int localisation =  (int)(Math.random() * ((limitSquares - 1) + 1));
 				System.out.println("TEST" + Dedale.monDonjon.get(localisation));
 
 				if(Dedale.monDonjon.get(localisation) instanceof Event) {
@@ -262,7 +260,7 @@ public void gestionInventory(){
 			int limiteBreak = 0;
 			do {
 				limiteBreak++;
-				int localisation =  1 + (int)(Math.random() * ((limitSquares - 1) + 1));
+				int localisation = (int)(Math.random() * ((limitSquares - 1) + 1));
 				System.out.println("TEST" + Dedale.monDonjon.get(localisation));
 
 				if(Dedale.monDonjon.get(localisation) instanceof Event) {
@@ -275,76 +273,50 @@ public void gestionInventory(){
 	
 	public static void generateBoxes()
 	{
-		Troll[] myTrolls = new Troll[6];
-		Sorcerer[] mySorcerers = new Sorcerer[4];
-		Succubus[] mySuccubus = new Succubus[4];
+		BoxShield[] myShield = new BoxShield[3];
+		BoxProtectionPotion[] myProtectionPotion = new BoxProtectionPotion[3];
 
-		myTrolls[0] = new Troll(80);
-		myTrolls[1] = new Troll(60);
-		myTrolls[2] = new Troll(40);
-		myTrolls[3] = new Troll(30);
-		myTrolls[4] = new Troll(20);
-		myTrolls[5] = new Troll(15);
+		myShield[0] = new BoxShield();
+		myShield[1] = new BoxShield();
+		myShield[2] = new BoxShield();
 		
-//		for(int i = 6; i < 59; i++){
-//			myTrolls[i] = new Troll(15);
-//		}
+		myProtectionPotion[0] = new BoxProtectionPotion();
+		myProtectionPotion[1] = new BoxProtectionPotion();
+		myProtectionPotion[2] = new BoxProtectionPotion();
+	
+
 		
-		mySorcerers[0] = new Sorcerer(75);
-		mySorcerers[1] = new Sorcerer(50);
-		mySorcerers[2] = new Sorcerer(25);
-		mySorcerers[3] = new Sorcerer(15);	
-		
-		mySuccubus[0] = new Succubus(75);
-		mySuccubus[1] = new Succubus(50);
-		mySuccubus[2] = new Succubus(25);
-		mySuccubus[3] = new Succubus(15);	
-		
-///////////////TROLL////////////////////////////////////////////////////////////////
-		for(int i = 0; i < 6; i++){
-			boolean trollOk = false;
+///////////////SHIELDS////////////////////////////////////////////////////////////////
+		for(int i = 0; i < 3; i++){
+			boolean shieldOk = false;
 			int limiteBreak = 0;
 			do {
 				limiteBreak++;
-				int localisation =  1 + (int)(Math.random() * ((limitSquares - 1) + 1));
+				int localisation = (int)(Math.random() * ((limitSquares - 1) + 1));
 				System.out.println("TEST" + Dedale.monDonjon.get(localisation));
 
 				if(Dedale.monDonjon.get(localisation) instanceof Event) {
-					Dedale.monDonjon.set(localisation, myTrolls[i]);
-					trollOk = true;
+					Dedale.monDonjon.set(localisation, myShield[i]);
+					shieldOk = true;
 				}
-			}while(trollOk != true || limiteBreak >= 10 );
+			}while(shieldOk != true || limiteBreak >= 10 );
 		}
-///////////////SORCERER////////////////////////////////////////////////////////////////
-		for(int i = 0; i < 4; i++){
-			boolean sorcerersOK = false;
+///////////////PROTECTION POTIONS////////////////////////////////////////////////////////////////
+		for(int i = 0; i < 3; i++){
+			boolean protecPotionOK = false;
 			int limiteBreak = 0;
 			do {
 				limiteBreak++;
-				int localisation =  1 + (int)(Math.random() * ((limitSquares - 1) + 1));
+				int localisation = (int)(Math.random() * ((limitSquares - 1) + 1));
 				System.out.println("TEST" + Dedale.monDonjon.get(localisation));
 
 				if(Dedale.monDonjon.get(localisation) instanceof Event) {
-					Dedale.monDonjon.set(localisation, mySorcerers[i]);
-					sorcerersOK = true;
+					Dedale.monDonjon.set(localisation, myProtectionPotion[i]);
+					protecPotionOK = true;
 				}
-			}while(sorcerersOK != true || limiteBreak >= 10 );
+			}while(protecPotionOK != true || limiteBreak >= 10 );
 		}
-///////////////SUCCUBUS////////////////////////////////////////////////////////////////
-		for(int i = 0; i < 4; i++){
-			boolean succubusOK = false;
-			int limiteBreak = 0;
-			do {
-				limiteBreak++;
-				int localisation =  1 + (int)(Math.random() * ((limitSquares - 1) + 1));
-				System.out.println("TEST" + Dedale.monDonjon.get(localisation));
 
-				if(Dedale.monDonjon.get(localisation) instanceof Event) {
-					Dedale.monDonjon.set(localisation, mySuccubus[i]);
-					succubusOK = true;
-				}
-			}while(succubusOK != true || limiteBreak >= 10 );
-		}
 	}
 	
 	
@@ -371,8 +343,8 @@ public void gestionInventory(){
 					Dedale.setmySquare(str4);
 					break;
 				case "2":
-					for(int i = 0; i < Dedale.limitSquares; i++){
-						System.out.println(Dedale.monDonjon.get(i).afficher());
+					for(int i = 0; i <= limitSquares; i++){
+						System.out.println(Dedale.monDonjon.get(i).afficher() + " " + i);
 					}
 					break;
 				case "4":

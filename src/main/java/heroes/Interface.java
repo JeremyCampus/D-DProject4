@@ -1,5 +1,7 @@
 package main.java.heroes;
 
+import main.java.heroes.enemy.*;
+import main.java.heroes.supriseBoxes.*;
 import java.util.Scanner;
 
 public abstract class Interface extends Dedale{
@@ -13,6 +15,14 @@ public abstract class Interface extends Dedale{
 	}
 	
 	public static void menuPrincipal() {
+		if(Dedale.monDonjon.get(mySquare) instanceof Enemy) {
+			System.out.println("---");
+			System.out.println("Vous etes chez un ennemi : " + Dedale.monDonjon.get(mySquare).afficher());
+		}
+		if(Dedale.monDonjon.get(mySquare) instanceof Box) {
+			System.out.println("---");
+			System.out.println("Vous etes tombé sur un trésor ! " + Dedale.monDonjon.get(mySquare).afficher());
+		}
 		System.out.println("_____________________________________________________________________");
 		System.out.println("|||||||||||||||||||||| QUE VOULEZ VOUS FAIRE ? ||||||||||||||||||||||");
 		System.out.println("_____________________________________________________________________");
@@ -82,7 +92,7 @@ public abstract class Interface extends Dedale{
 		System.out.println("");
 		System.out.println("");
 		System.out.println("_____________________________________________________________________");
-		System.out.println("|||||||||||||||||||||| CHEAT CODE ZONE ||||||||||||||||||||||");
+		System.out.println("|||||||||||||||||||||| CHEAT CODE CONSOLE ||||||||||||||||||||||");
 		System.out.println("_____________________________________________________________________");
 		System.out.println("---");
 		System.out.println("Changer Case ? = 1");
