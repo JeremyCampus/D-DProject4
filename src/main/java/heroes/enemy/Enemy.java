@@ -1,6 +1,9 @@
 package main.java.heroes.enemy;
 
-public class Enemy {
+import main.java.heroes.*;
+
+
+public class Enemy extends Event{
 	public String nameEnemy = "test";
 	public int damage = 1;
 	public boolean combatGuerrier = false;
@@ -10,5 +13,9 @@ public class Enemy {
 	
 	public Enemy() {
 		
+	}
+	
+	public String afficher() {
+		return "Je suis : Enemy";
 	}
 }

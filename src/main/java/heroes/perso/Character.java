@@ -15,6 +15,7 @@ public abstract class Character {
 
 	
 	public Character() {
+		int machin = 2;
 	}
 
 	// public Character(String myName, String newImage, int newLife, int newStrenght) {

@@ -11,4 +11,6 @@ public class Troll extends Enemy{
 		damage = age;
 	}
 	
+	
+	
 }

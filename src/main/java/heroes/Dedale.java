@@ -6,16 +6,14 @@ import java.util.List;
 
 import main.java.heroes.perso.*;
 import main.java.heroes.perso.Character;
-import main.java.heroes.items.*;
 import main.java.heroes.enemy.*;
 
 public class Dedale {
 
 	static List<Character> listeHeroes = new ArrayList<Character>();
+	static List<Event> monDonjon = new ArrayList<Event>();
 	protected static int mySquare = 0;
 	protected static int limitSquares = 63;
-	static List<Event> monDonjon = new ArrayList<Event>();
-	Scanner sc = new Scanner(System.in);
 
 	
 
@@ -26,30 +24,12 @@ public class Dedale {
 		generateDonjon();
 		Scanner sc = new Scanner(System.in);
 		boolean quitter = false;	
-		clearZone();		  
+		Interface.clearZone();		  
 			do{
 				if(mySquare < limitSquares ){
-					System.out.println("_____________________________________________________________________");
-					System.out.println("|||||||||||||||||||||| QUE VOULEZ VOUS FAIRE ? ||||||||||||||||||||||");
-					System.out.println("_____________________________________________________________________");
-					System.out.println("-VOUS ETES SUR LA CASE N " + getmySquare() + " -");
-					System.out.println("---");
-					System.out.println("Afficher le personnages ? = 1");
-					System.out.println("Selectionner un personnage ? = 2");
-					System.out.println("Vous soigner ? (" + listeHeroes.get(0).getNbHealingPotion() + " potions restante(s) ) = 3");
-					System.out.println("Vous déplacer ? = 4");
-					System.out.println("Quitter = 5");
-					System.out.println("---");
-					System.out.println("");
-					System.out.println("");
-					System.out.println("");
-					System.out.println("");
-					System.out.println("");
+					Interface.menuPrincipal();
 					String str2 = sc.nextLine();
-					clearZone();
-					System.out.println("_____________________________________________________________________");
-					System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
-					System.out.println("_____________________________________________________________________");
+					Interface.clearZone();
 					switch (str2)
 					{        
 						case "1":
@@ -73,8 +53,35 @@ public class Dedale {
 							break;   
 						case "5":
 							quitter = true;
-							break;   
-	 						  
+							break; 
+////////////////////CONSOLE ADMIN / CHEAT CODES//////////////////////
+						case "42":
+							boolean quitterCheatCodes = false;	
+							do {
+								Interface.menuCheatCode();
+								String str3 = sc.nextLine();
+								Interface.clearZone();
+								switch (str3)
+								{        
+									case "1":
+										int str4 = sc.nextInt();
+										Dedale.setmySquare(str4);
+										break;
+									case "2":
+										for(int i = 0; i < Dedale.limitSquares; i++){
+											System.out.println(Dedale.monDonjon.get(i).afficher());
+										}
+										break;
+									case "4":
+										quitterCheatCodes = true;
+										break;
+									default:
+										System.out.println("");
+										break;
+								}
+							}while(quitterCheatCodes != true);
+							break; 
+/////////////////////////END///////////////////////////
 						default:
 							System.out.println("");
 							break;        
@@ -90,41 +97,17 @@ public class Dedale {
 
 	}
 	
-	public static void clearZone()
-	{
-		System.out.print("\033[H\033[2J");  //CLEAR TERMINAL
-		System.out.flush();					//CLEAR TERMINAL
-	}
+	
 //-------------------------Selectionner/modifier Un personnage
 public static void gestionDuHero(int numHero){
-	boolean exit = false;			  
+	boolean exit = false;
 	Scanner sc = new Scanner(System.in);
-	clearZone();		  
+	Interface.clearZone();		  
 	do{
-		listeHeroes.get(numHero).mettreAJour();
-		System.out.println("");
-		System.out.println("");
-		System.out.println("VOUS AVEZ SELECTIONNE : " +listeHeroes.get(numHero).getName());
-		System.out.println("_____________________________________________________________________");
-		System.out.println("|||||||||||||||||||||| QUE VOULEZ VOUS FAIRE ? ||||||||||||||||||||||");
-		System.out.println("_____________________________________________________________________");
-		System.out.println("---");
-		System.out.println("Afficher toutes ses infos ? = 1");
-		System.out.println("Afficher son inventaire ? = 2");		
-		System.out.println("Gestion de son inventaire ? = 3");		
-		System.out.println("Quitter  = 4");
-		System.out.println("---");
-		System.out.println("");
-		System.out.println("");
-		System.out.println("");
-		System.out.println("");
-		System.out.println("");
+		listeHeroes.get(0).mettreAJour();
+		Interface.menuGestionHero();
 		String str2 = sc.nextLine();
-		clearZone();		  		
-		System.out.println("_____________________________________________________________________");
-		System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
-		System.out.println("_____________________________________________________________________");
-
+		Interface.clearZone();
 		switch (str2)
 		{
 			case "1":
@@ -150,30 +133,11 @@ public static void gestionDuHero(int numHero){
 public void gestionInventory(){
 	Scanner sc = new Scanner(System.in);
 	boolean quitter = false;	
-	clearZone();		  
+	Interface.clearZone();		  
 		do{
-			System.out.println("");
-			System.out.println("");
-			System.out.println("");
-			System.out.println("_____________________________________________________________________");
-			System.out.println("|||||||||||||||||||||| INVENTAIRE DE "+ listeHeroes.get(0).getName() +" ||||||||||||||||||||||");
-			System.out.println("_____________________________________________________________________");
-			System.out.println("---");
-			System.out.println("Afficher l'inventaire ? = 1");
-			System.out.println("Afficher l'arme actuelle pour se battre ? = 2");
-			System.out.println("Choisir l'arme pour se battre ? = 3");
-			System.out.println("Quitter = 4");
-			System.out.println("---");
-			System.out.println("");
-			System.out.println("");
-			System.out.println("");
-			System.out.println("");
-			System.out.println("");
+			Interface.menuGestionInventory();
 			String str2 = sc.nextLine();
-			clearZone();
-			System.out.println("_____________________________________________________________________");
-			System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
-			System.out.println("_____________________________________________________________________");
+			Interface.clearZone();
 			switch (str2)
 			{
 				case "1":
@@ -277,7 +241,7 @@ public void gestionInventory(){
 		
 		for(int i = 0; i < 6; i++){
 			int localisation =  1 + (int)(Math.random() * ((limitSquares - 1) + 1));
-			monDonjon.get(localisation).setEnemy(myTrolls[i]);
+			Dedale.monDonjon.set(localisation, myTrolls[i]);
 		}
 		
 		

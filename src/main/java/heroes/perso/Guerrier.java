@@ -17,7 +17,7 @@ public class Guerrier extends Character{
 	
 	public Guerrier() {
 		super();
-		// inventory.add(myAttackItem);
+		inventory.add(myAttackItem);
 	}
 
 
@@ -67,21 +67,7 @@ public class Guerrier extends Character{
 		 +"\n"
 		 +"\n_________________________________________";
 	}
-	// public void afficher() {
-	// 	System.out.println("_________________________________________");
-	// 	System.out.println("");
-	// 	System.out.println("Your Name : " + name);
-	// 	System.out.println("Your Profession : " + metier);
-	// 	System.out.println("Your Image : " + image);
-	// 	System.out.println("Your Life : " + life);
-	// 	System.out.println("Your strength : " + strength);
-	// 	System.out.println("---");
-	// 	System.out.println("Your weapon is " + myAttackItem.getNameItemAttack() + " who deliver " + myAttackItem.getItemAttackLevel() + " damages.");
-	// 	System.out.println("Your shield : " + shield);
-	// 	System.out.println("Your inventory has " + inventory.size() + " Weapons.");		
-	// 	System.out.println("");
-	// 	System.out.println("_________________________________________");
-	// }
+
 
 
 	public void ajouterArmeSpell(){
@@ -99,59 +85,54 @@ public class Guerrier extends Character{
 		inventory.add(myAttackItem);
 	}
 
-	public static void clearZone()
-	{
-		System.out.print("\033[H\033[2J");  //CLEAR TERMINAL
-		System.out.flush();					//CLEAR TERMINAL
-	}
 
-	public void gestionInventory(){
-		Scanner sc = new Scanner(System.in);
-		boolean quitter = false;	
-		clearZone();		  
-			do{
-				System.out.println("");
-				System.out.println("");
-				System.out.println("");
-				System.out.println("_____________________________________________________________________");
-				System.out.println("|||||||||||||||||||||| INVENTAIRE DE "+ getName() +" ||||||||||||||||||||||");
-				System.out.println("_____________________________________________________________________");
-				System.out.println("---");
-				System.out.println("Afficher l'inventaire ? = 1");
-				System.out.println("Afficher l'arme actuelle pour se battre ? = 2");
-				System.out.println("Choisir l'arme pour se battre ? = 3");
-				System.out.println("Quitter = 4");
-				System.out.println("---");
-				System.out.println("");
-				System.out.println("");
-				System.out.println("");
-				System.out.println("");
-				System.out.println("");
-				String str2 = sc.nextLine();
-				clearZone();
-				System.out.println("_____________________________________________________________________");
-				System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
-				System.out.println("_____________________________________________________________________");
-				switch (str2)
-				{
-					case "1":
-						afficherInventory();
-						break;            
-					case "2":
-						System.out.println(getName() + " utilise actuellement l'arme : " + myAttackItem.getNameItemAttack());
-						break;  
-					case "3":
-						selectionnerArme();
-						break;        	
-					case "4":
-						quitter = true;
-						break;   						  
-					default:
-						System.out.println("");
-						break;        
-				}
-			}while(quitter != true);
-	}
+//	public void gestionInventory(){
+//		Scanner sc = new Scanner(System.in);
+//		boolean quitter = false;	
+//		clearZone();		  
+//			do{
+//				System.out.println("");
+//				System.out.println("");
+//				System.out.println("");
+//				System.out.println("_____________________________________________________________________");
+//				System.out.println("|||||||||||||||||||||| INVENTAIRE DE "+ getName() +" ||||||||||||||||||||||");
+//				System.out.println("_____________________________________________________________________");
+//				System.out.println("---");
+//				System.out.println("Afficher l'inventaire ? = 1");
+//				System.out.println("Afficher l'arme actuelle pour se battre ? = 2");
+//				System.out.println("Choisir l'arme pour se battre ? = 3");
+//				System.out.println("Quitter = 4");
+//				System.out.println("---");
+//				System.out.println("");
+//				System.out.println("");
+//				System.out.println("");
+//				System.out.println("");
+//				System.out.println("");
+//				String str2 = sc.nextLine();
+//				clearZone();
+//				System.out.println("_____________________________________________________________________");
+//				System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+//				System.out.println("_____________________________________________________________________");
+//				switch (str2)
+//				{
+//					case "1":
+//						afficherInventory();
+//						break;            
+//					case "2":
+//						System.out.println(getName() + " utilise actuellement l'arme : " + myAttackItem.getNameItemAttack());
+//						break;  
+//					case "3":
+//						selectionnerArme();
+//						break;        	
+//					case "4":
+//						quitter = true;
+//						break;   						  
+//					default:
+//						System.out.println("");
+//						break;        
+//				}
+//			}while(quitter != true);
+//	}
 
 	public void afficherInventory(){
 		System.out.println("______________||_INVENTAIRE_||______________");

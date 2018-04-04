@@ -1,43 +1,102 @@
 package main.java.heroes;
 
-import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.List;
 
-import main.java.heroes.perso.*;
-import main.java.heroes.perso.Character;
-import main.java.heroes.items.*;
-
-public abstract class Interface {
+public abstract class Interface extends Dedale{
+	public static int machin = 0;
 
 	public static void clearZone()
 	{
 		System.out.print("\033[H\033[2J");  //CLEAR TERMINAL
 		System.out.flush();					//CLEAR TERMINAL
+		machin = machin +1;
 	}
 	
-	public void mainMenu(){
-	System.out.println("_____________________________________________________________________");
-	System.out.println("|||||||||||||||||||||| QUE VOULEZ VOUS FAIRE ? ||||||||||||||||||||||");
-	System.out.println("_____________________________________________________________________");
-	System.out.println("-VOUS ETES SUR LA CASE N " + getmySquare() + " -");
-	System.out.println("---");
-	System.out.println("Afficher le personnages ? = 1");
-	System.out.println("Selectionner un personnage ? = 2");
-	System.out.println("Vous soigner ? (" + listeHeroes.get(0).getNbHealingPotion() + " potions restante(s) ) = 3");
-	System.out.println("Vous déplacer ? = 4");
-	System.out.println("Quitter = 5");
-	System.out.println("---");
-	System.out.println("");
-	System.out.println("");
-	System.out.println("");
-	System.out.println("");
-	System.out.println("");
-	String str2 = sc.nextLine();
-	clearZone();
-	System.out.println("_____________________________________________________________________");
-	System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
-	System.out.println("_____________________________________________________________________");
-}
+	public static void menuPrincipal() {
+		System.out.println("_____________________________________________________________________");
+		System.out.println("|||||||||||||||||||||| QUE VOULEZ VOUS FAIRE ? ||||||||||||||||||||||");
+		System.out.println("_____________________________________________________________________");
+		System.out.println("-VOUS ETES SUR LA CASE N " + getmySquare() + " -");
+		System.out.println("---");
+		System.out.println("Afficher le personnages ? = 1");
+		System.out.println("Selectionner un personnage ? = 2");
+		System.out.println("Vous soigner ? ( " + listeHeroes.get(0).getNbHealingPotion() + " potions restante(s)");
+		System.out.println("Vous deplacer ? = 4");
+		System.out.println("Quitter = 5");
+		System.out.println("---");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("_____________________________________________________________________");
+		System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+		System.out.println("_____________________________________________________________________");
+	}
 	
+	public static void menuGestionHero() {
+		System.out.println("");
+		System.out.println("Gestion du hero : " + listeHeroes.get(0).getName());
+		System.out.println("_____________________________________________________________________");
+		System.out.println("|||||||||||||||||||||| QUE VOULEZ VOUS FAIRE ? ||||||||||||||||||||||");
+		System.out.println("_____________________________________________________________________");
+		System.out.println("---");
+		System.out.println("Afficher toutes ses infos ? = 1");
+		System.out.println("Afficher son inventaire ? = 2");		
+		System.out.println("Gestion de son inventaire ? = 3");		
+		System.out.println("Quitter  = 4");
+		System.out.println("---");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");		  		
+		System.out.println("_____________________________________________________________________");
+		System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+		System.out.println("_____________________________________________________________________");
+	}
+	
+	
+	public static void menuGestionInventory() {
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("_____________________________________________________________________");
+		System.out.println("|||||||||||||||||||||| INVENTAIRE DE "+ listeHeroes.get(0).getName() +" ||||||||||||||||||||||");
+		System.out.println("_____________________________________________________________________");
+		System.out.println("-VOUS ETES SUR LA CASE N " + getmySquare() + " -");
+		System.out.println("Aller sur une case ? = 1");
+		System.out.println("Afficher Toutes les cases ? = 2");
+		System.out.println(" = 3");
+		System.out.println("Quitter = 4");
+		System.out.println("---");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("_____________________________________________________________________");
+		System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+		System.out.println("_____________________________________________________________________");
+		
+	}
+	
+	public static void menuCheatCode(){
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("_____________________________________________________________________");
+		System.out.println("|||||||||||||||||||||| CHEAT CODE ZONE ||||||||||||||||||||||");
+		System.out.println("_____________________________________________________________________");
+		System.out.println("---");
+		System.out.println("Changer Case ? = 1");
+		System.out.println("Afficher tout = 2");
+		System.out.println(" ? = 3");
+		System.out.println("Quitter = 4");
+		System.out.println("---");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("_____________________________________________________________________");
+		System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+		System.out.println("_____________________________________________________________________");
+			}
 }
