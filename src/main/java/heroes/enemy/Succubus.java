@@ -9,4 +9,7 @@ public class Succubus extends Enemy{
 		protection = 2;
 	}
 	
+	public String afficher() {
+		return "Je suis : une Succubus";
+	}
 }

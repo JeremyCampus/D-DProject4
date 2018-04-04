@@ -56,30 +56,7 @@ public class Dedale {
 							break; 
 ////////////////////CONSOLE ADMIN / CHEAT CODES//////////////////////
 						case "42":
-							boolean quitterCheatCodes = false;	
-							do {
-								Interface.menuCheatCode();
-								String str3 = sc.nextLine();
-								Interface.clearZone();
-								switch (str3)
-								{        
-									case "1":
-										int str4 = sc.nextInt();
-										Dedale.setmySquare(str4);
-										break;
-									case "2":
-										for(int i = 0; i < Dedale.limitSquares; i++){
-											System.out.println(Dedale.monDonjon.get(i).afficher());
-										}
-										break;
-									case "4":
-										quitterCheatCodes = true;
-										break;
-									default:
-										System.out.println("");
-										break;
-								}
-							}while(quitterCheatCodes != true);
+							Dedale.cheatCodeConsole();
 							break; 
 /////////////////////////END///////////////////////////
 						default:
@@ -194,7 +171,7 @@ public void gestionInventory(){
 		listeHeroes.add(myHero);
 	}
 	
-	//-------------------------GESTION DEDALE/SQUARES
+	//-------------------------GESTION SQUARES/DONJON
 
 	public static int getmySquare() {
 		return mySquare;
@@ -208,7 +185,7 @@ public void gestionInventory(){
 	public static void generateDonjon() {
 		setmySquare(0);
 		
-		for(int i = 0; i < limitSquares; i++){
+		for(int i = 0; i < limitSquares+1; i++){
 			Event myEvent = new Event();
 			monDonjon.add(myEvent);
 		}
@@ -218,6 +195,12 @@ public void gestionInventory(){
 	}
 	
 	public static void feedDonjon() {
+		Dedale.generateMonsters();
+		Dedale.generateBoxes();
+	}
+
+	public static void generateMonsters()
+	{
 		Troll[] myTrolls = new Troll[6];
 		Sorcerer[] mySorcerers = new Sorcerer[4];
 		Succubus[] mySuccubus = new Succubus[4];
@@ -229,6 +212,10 @@ public void gestionInventory(){
 		myTrolls[4] = new Troll(20);
 		myTrolls[5] = new Troll(15);
 		
+//		for(int i = 6; i < 59; i++){
+//			myTrolls[i] = new Troll(15);
+//		}
+		
 		mySorcerers[0] = new Sorcerer(75);
 		mySorcerers[1] = new Sorcerer(50);
 		mySorcerers[2] = new Sorcerer(25);
@@ -239,19 +226,162 @@ public void gestionInventory(){
 		mySuccubus[2] = new Succubus(25);
 		mySuccubus[3] = new Succubus(15);	
 		
+///////////////TROLL////////////////////////////////////////////////////////////////
 		for(int i = 0; i < 6; i++){
-			int localisation =  1 + (int)(Math.random() * ((limitSquares - 1) + 1));
-			Dedale.monDonjon.set(localisation, myTrolls[i]);
-		}
-		
-		
-	}
+			boolean trollOk = false;
+			int limiteBreak = 0;
+			do {
+				limiteBreak++;
+				int localisation =  1 + (int)(Math.random() * ((limitSquares - 1) + 1));
+				System.out.println("TEST" + Dedale.monDonjon.get(localisation));
 
+				if(Dedale.monDonjon.get(localisation) instanceof Event) {
+					Dedale.monDonjon.set(localisation, myTrolls[i]);
+					trollOk = true;
+				}
+			}while(trollOk != true || limiteBreak >= 10 );
+		}
+///////////////SORCERER////////////////////////////////////////////////////////////////
+		for(int i = 0; i < 4; i++){
+			boolean sorcerersOK = false;
+			int limiteBreak = 0;
+			do {
+				limiteBreak++;
+				int localisation =  1 + (int)(Math.random() * ((limitSquares - 1) + 1));
+				System.out.println("TEST" + Dedale.monDonjon.get(localisation));
+
+				if(Dedale.monDonjon.get(localisation) instanceof Event) {
+					Dedale.monDonjon.set(localisation, mySorcerers[i]);
+					sorcerersOK = true;
+				}
+			}while(sorcerersOK != true || limiteBreak >= 10 );
+		}
+///////////////SUCCUBUS////////////////////////////////////////////////////////////////
+		for(int i = 0; i < 4; i++){
+			boolean succubusOK = false;
+			int limiteBreak = 0;
+			do {
+				limiteBreak++;
+				int localisation =  1 + (int)(Math.random() * ((limitSquares - 1) + 1));
+				System.out.println("TEST" + Dedale.monDonjon.get(localisation));
+
+				if(Dedale.monDonjon.get(localisation) instanceof Event) {
+					Dedale.monDonjon.set(localisation, mySuccubus[i]);
+					succubusOK = true;
+				}
+			}while(succubusOK != true || limiteBreak >= 10 );
+		}
+	}
 	
+	public static void generateBoxes()
+	{
+		Troll[] myTrolls = new Troll[6];
+		Sorcerer[] mySorcerers = new Sorcerer[4];
+		Succubus[] mySuccubus = new Succubus[4];
+
+		myTrolls[0] = new Troll(80);
+		myTrolls[1] = new Troll(60);
+		myTrolls[2] = new Troll(40);
+		myTrolls[3] = new Troll(30);
+		myTrolls[4] = new Troll(20);
+		myTrolls[5] = new Troll(15);
+		
+//		for(int i = 6; i < 59; i++){
+//			myTrolls[i] = new Troll(15);
+//		}
+		
+		mySorcerers[0] = new Sorcerer(75);
+		mySorcerers[1] = new Sorcerer(50);
+		mySorcerers[2] = new Sorcerer(25);
+		mySorcerers[3] = new Sorcerer(15);	
+		
+		mySuccubus[0] = new Succubus(75);
+		mySuccubus[1] = new Succubus(50);
+		mySuccubus[2] = new Succubus(25);
+		mySuccubus[3] = new Succubus(15);	
+		
+///////////////TROLL////////////////////////////////////////////////////////////////
+		for(int i = 0; i < 6; i++){
+			boolean trollOk = false;
+			int limiteBreak = 0;
+			do {
+				limiteBreak++;
+				int localisation =  1 + (int)(Math.random() * ((limitSquares - 1) + 1));
+				System.out.println("TEST" + Dedale.monDonjon.get(localisation));
+
+				if(Dedale.monDonjon.get(localisation) instanceof Event) {
+					Dedale.monDonjon.set(localisation, myTrolls[i]);
+					trollOk = true;
+				}
+			}while(trollOk != true || limiteBreak >= 10 );
+		}
+///////////////SORCERER////////////////////////////////////////////////////////////////
+		for(int i = 0; i < 4; i++){
+			boolean sorcerersOK = false;
+			int limiteBreak = 0;
+			do {
+				limiteBreak++;
+				int localisation =  1 + (int)(Math.random() * ((limitSquares - 1) + 1));
+				System.out.println("TEST" + Dedale.monDonjon.get(localisation));
+
+				if(Dedale.monDonjon.get(localisation) instanceof Event) {
+					Dedale.monDonjon.set(localisation, mySorcerers[i]);
+					sorcerersOK = true;
+				}
+			}while(sorcerersOK != true || limiteBreak >= 10 );
+		}
+///////////////SUCCUBUS////////////////////////////////////////////////////////////////
+		for(int i = 0; i < 4; i++){
+			boolean succubusOK = false;
+			int limiteBreak = 0;
+			do {
+				limiteBreak++;
+				int localisation =  1 + (int)(Math.random() * ((limitSquares - 1) + 1));
+				System.out.println("TEST" + Dedale.monDonjon.get(localisation));
+
+				if(Dedale.monDonjon.get(localisation) instanceof Event) {
+					Dedale.monDonjon.set(localisation, mySuccubus[i]);
+					succubusOK = true;
+				}
+			}while(succubusOK != true || limiteBreak >= 10 );
+		}
+	}
+	
+	
+	
+//////////MOVE/////////////////
 	public static void move()
 	{
 		int deplacement = 0;
 		deplacement = getmySquare() + 1 + (int)(Math.random() * ((6 - 1) + 1));
 		setmySquare(deplacement);
 	}
+	
+	public static void cheatCodeConsole() {
+		Scanner sc = new Scanner(System.in);
+		boolean quitterCheatCodes = false;	
+		do {
+			Interface.menuCheatCode();
+			String str3 = sc.nextLine();
+			Interface.clearZone();
+			switch (str3)
+			{        
+				case "1":
+					int str4 = sc.nextInt();
+					Dedale.setmySquare(str4);
+					break;
+				case "2":
+					for(int i = 0; i < Dedale.limitSquares; i++){
+						System.out.println(Dedale.monDonjon.get(i).afficher());
+					}
+					break;
+				case "4":
+					quitterCheatCodes = true;
+					break;
+				default:
+					System.out.println("");
+					break;
+			}
+		}while(quitterCheatCodes != true);
+		}
 }

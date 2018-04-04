@@ -12,6 +12,7 @@ public abstract class Character {
 	protected int damages = FA;
 	protected String metier = "Peasant";
 	public AttackItem myAttackItem = new AttackItem();
+	public DefenseItem myDefenseItem = new DefenseItem();
 
 	
 	public Character() {

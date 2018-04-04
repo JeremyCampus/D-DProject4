@@ -11,6 +11,7 @@ public class Troll extends Enemy{
 		damage = age;
 	}
 	
-	
-	
+	public String afficher() {
+		return "Je suis : un Troll";
+	}	
 }

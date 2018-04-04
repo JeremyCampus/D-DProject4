@@ -4,7 +4,7 @@ import main.java.heroes.*;
 
 
 public class Enemy extends Event{
-	public String nameEnemy = "test";
+	public String nameEnemy = "mechant";
 	public int damage = 1;
 	public boolean combatGuerrier = false;
 	public boolean combatMage = false;

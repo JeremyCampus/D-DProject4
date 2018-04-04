@@ -6,7 +6,10 @@ public class Sorcerer extends Enemy{
 		super();
 		combatMage = true;
 		damage = newDamage;
-
 	}
 	
+	public String afficher() {
+		return "Je suis : un Sorcerer";
+	}
+
 }

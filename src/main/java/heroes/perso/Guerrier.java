@@ -10,6 +10,7 @@ import java.util.List;
 public class Guerrier extends Character{
 	protected static List<Arme> inventory = new ArrayList<Arme>();	
 	public Arme myAttackItem = new Arme();
+	public Shield myDefenseItem = new Shield();
 	protected int damages =  FA + myAttackItem.getItemAttackLevel();
 	protected boolean shield = false;
 	protected String metier = "Guerrier";

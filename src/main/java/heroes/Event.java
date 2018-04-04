@@ -15,6 +15,6 @@ public class Event {
 	
 
 	public String afficher() {
-		return "Je suis : Interface";
+		return "Je suis : Event";
 	}
 }

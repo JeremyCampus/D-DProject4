@@ -1,10 +1,10 @@
 package main.java.heroes.items;
 
 
-public class AttackItem extends Item{
+public class DefenseItem extends Item{
 	protected int AttackItemDamage = 1;
 
-	public AttackItem() {
+	public DefenseItem() {
 
 	}
 
