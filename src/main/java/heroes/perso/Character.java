@@ -1,8 +1,8 @@
-package main.java.heroes;
+package main.java.heroes.perso;
 
-import java.util.Scanner;
+import main.java.heroes.items.*;
 
-class Character {
+public abstract class Character {
 	protected String name = "Peasant";
 	protected String image  = "X";
 	protected int life = 1 + (int)(Math.random() * ((100 - 1) + 1));
@@ -11,7 +11,7 @@ class Character {
 	protected int FA = 1; 
 	protected int damages = FA;
 	protected String metier = "Peasant";
-	protected AttackItem myAttackItem = new AttackItem();
+	public AttackItem myAttackItem = new AttackItem();
 
 	
 	public Character() {

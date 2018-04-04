@@ -1,13 +1,19 @@
 package main.java.heroes;
-import java.util.Random;
+import main.java.heroes.enemy.*;
 
 public class Event {
-	protected int test = 1;
+	protected static int type = 0;
+	protected static int typeEnnemi = 0;
+	protected static int typeCaisse = 0;
+	public Enemy myEnemy = new Enemy();
+
 	public Event() {
-		test =  + (int)(Math.random() * ((100 - 1) + 1));;
+		
 	}
 	
-	public int getTest(){
-		return test;
+	
+	
+	public void setEnemy(Enemy theEnemy){
+		myEnemy = theEnemy;
 	}
 }

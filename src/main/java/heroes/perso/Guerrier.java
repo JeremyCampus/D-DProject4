@@ -1,32 +1,34 @@
-package main.java.heroes;
+package main.java.heroes.perso;
+import main.java.heroes.items.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.List;
+
 // import java.util.ListIterator;
 
-class Mage extends Character{
-	static List<Spell> inventory = new ArrayList<Spell>();	
-	protected Spell myAttackItem = new Spell();
+public class Guerrier extends Character{
+	protected static List<Arme> inventory = new ArrayList<Arme>();	
+	public Arme myAttackItem = new Arme();
 	protected int damages =  FA + myAttackItem.getItemAttackLevel();
 	protected boolean shield = false;
-	protected String metier = "Mage";
+	protected String metier = "Guerrier";
 	
 	
-	public Mage() {
+	public Guerrier() {
 		super();
 		// inventory.add(myAttackItem);
 	}
 
 
-	public Mage(String myName) {
+	public Guerrier(String myName) {
 		super();
 		name = myName;
 		// inventory.add(myAttackItem);
 	}
 
 
-	public Mage(String myName, String newImage, int newLife, int newStrenght) {
+	public Guerrier(String myName, String newImage, int newLife, int newStrenght) {
 		setName(myName);
 		setImage(newImage);
 		setLife(newLife);
@@ -59,9 +61,9 @@ class Mage extends Character{
 		+"\nYour Profession : " + metier 
 		+ "\nYour Image : " + image 
 		+"\nYour Life : " + life +" --- "
-		 +"\nYour Spell is " + myAttackItem.getNameItemAttack() + " who deliver " + myAttackItem.getItemAttackLevel() + " damages."
+		 +"\nYour weapon is " + myAttackItem.getNameItemAttack() + " who deliver " + myAttackItem.getItemAttackLevel() + " damages."
 		 +"\nYour shield : " + shield
-		 +"\nYour inventory has " + inventory.size() + " Spells."	
+		 +"\nYour inventory has " + inventory.size() + " Weapons."	
 		 +"\n"
 		 +"\n_________________________________________";
 	}
@@ -74,18 +76,18 @@ class Mage extends Character{
 	// 	System.out.println("Your Life : " + life);
 	// 	System.out.println("Your strength : " + strength);
 	// 	System.out.println("---");
-	// 	System.out.println("Your Spell is " + myAttackItem.getNameSpell() + " who deliver " + myAttackItem.getItemAttackLevel() + " damages.");
+	// 	System.out.println("Your weapon is " + myAttackItem.getNameItemAttack() + " who deliver " + myAttackItem.getItemAttackLevel() + " damages.");
 	// 	System.out.println("Your shield : " + shield);
-	// 	System.out.println("Your inventory has " + inventory.size() + " Spells.");		
+	// 	System.out.println("Your inventory has " + inventory.size() + " Weapons.");		
 	// 	System.out.println("");
 	// 	System.out.println("_________________________________________");
 	// }
 
 
-	public void ajouterSpellSpell(){
+	public void ajouterArmeSpell(){
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Une Spell ? ");
-		myAttackItem = new Spell();
+		System.out.println("Une arme ? ");
+		myAttackItem = new Arme();
 
 		System.out.println("Son nom : ");
 		String str1 = sc.nextLine();
@@ -116,11 +118,9 @@ class Mage extends Character{
 				System.out.println("_____________________________________________________________________");
 				System.out.println("---");
 				System.out.println("Afficher l'inventaire ? = 1");
-				System.out.println("Creer une Spell pour se battre et le noter dans l'inventaire ? = 2");
-				System.out.println("Afficher l'Spell actuelle pour se battre ? = 3");
-				System.out.println("Choisir l'Spell pour se battre ? = 4");
-				System.out.println("Supprimer un objet de l'inventaire ? = 5");
-				System.out.println("Quitter = 6");
+				System.out.println("Afficher l'arme actuelle pour se battre ? = 2");
+				System.out.println("Choisir l'arme pour se battre ? = 3");
+				System.out.println("Quitter = 4");
 				System.out.println("---");
 				System.out.println("");
 				System.out.println("");
@@ -136,20 +136,14 @@ class Mage extends Character{
 				{
 					case "1":
 						afficherInventory();
-						break;        
+						break;            
 					case "2":
-						ajouterSpellSpell();			  
-						break;        
-					case "3":
-						System.out.println(getName() + " utilise actuellement l'Spell : " + myAttackItem.getNameItemAttack());
+						System.out.println(getName() + " utilise actuellement l'arme : " + myAttackItem.getNameItemAttack());
 						break;  
+					case "3":
+						selectionnerArme();
+						break;        	
 					case "4":
-						selectionnerSpell();
-						break;       
-					case "5":
-						supprimerSpell();
-						break;   	
-					case "6":
 						quitter = true;
 						break;   						  
 					default:
@@ -163,36 +157,36 @@ class Mage extends Character{
 		System.out.println("______________||_INVENTAIRE_||______________");
 		System.out.println("");
 		System.out.println("Your Name : " + name);
-		System.out.println("Your inventory has " + inventory.size() + " Spells.");	
+		System.out.println("Your inventory has " + inventory.size() + " Weapons.");	
 		System.out.println("_________________________________________");		
 		for(int i = 0; i < inventory.size(); i++){
 			System.out.println("");
 			System.out.println("");
-			System.out.println("Voici le Spell : " + inventory.get(i).getNameItemAttack() + " | Numero : " + i);
+			System.out.println("Voici l'arme : " + inventory.get(i).getNameItemAttack() + " | Numero : " + i);
 			System.out.println("Voici sa Puissance : " + inventory.get(i).getItemAttackLevel());;
 		}	
 
-		// System.out.println("Your Spell is " + myAttackItem.getNameSpell() + " who deliver " + myAttackItem.getItemAttackLevel() + " damages.");
+		// System.out.println("Your weapon is " + myAttackItem.getNameItemAttack() + " who deliver " + myAttackItem.getItemAttackLevel() + " damages.");
 
 	}
 
-	public void selectionnerSpell()
+	public void selectionnerArme()
 	{
 		Scanner sc = new Scanner(System.in);		
 		afficherInventory();
-		System.out.println("______________||QUELLE Spell VOULEZ VOUS UTILISER||______________");
+		System.out.println("______________||QUELLE ARME VOULEZ VOUS UTILISER||______________");
 		System.out.println("                     (Indiquez son numero)");
 		int str2 = sc.nextInt();
 		sc.nextLine();
 		myAttackItem= inventory.get(str2);
-		System.out.println(getName() + " utilise actuellement l'Spell : " + myAttackItem.getNameItemAttack());
+		System.out.println(getName() + " utilise actuellement l'arme : " + myAttackItem.getNameItemAttack());
 	}
 
-	public void supprimerSpell()
+	public void supprimerArme()
 	{
 		Scanner sc3 = new Scanner(System.in);		
 		afficherInventory();
-		System.out.println("______________||QUELLE Spell VOULEZ VOUS SUPPRIMER||______________");
+		System.out.println("______________||QUELLE ARME VOULEZ VOUS SUPPRIMER||______________");
 		System.out.println("                     (Indiquez son numero)");
 		int str2 = sc3.nextInt();
 		sc3.nextLine();

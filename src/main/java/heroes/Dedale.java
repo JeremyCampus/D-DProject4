@@ -4,8 +4,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.List;
 
+import main.java.heroes.perso.*;
+import main.java.heroes.perso.Character;
+import main.java.heroes.items.*;
+import main.java.heroes.enemy.*;
 
-class Dedale {
+public class Dedale {
 
 	static List<Character> listeHeroes = new ArrayList<Character>();
 	protected static int mySquare = 0;
@@ -14,17 +18,8 @@ class Dedale {
 	Scanner sc = new Scanner(System.in);
 
 	
-	public Dedale(){
-	}
-		
-	public void newCharacter(){
-	}
 
-	public static void clearZone()
-	{
-		System.out.print("\033[H\033[2J");  //CLEAR TERMINAL
-		System.out.flush();					//CLEAR TERMINAL
-	}
+
 
 	public static void main(String[] args) {
 		createCharacter();
@@ -93,6 +88,12 @@ class Dedale {
 
 
 
+	}
+	
+	public static void clearZone()
+	{
+		System.out.print("\033[H\033[2J");  //CLEAR TERMINAL
+		System.out.flush();					//CLEAR TERMINAL
 	}
 //-------------------------Selectionner/modifier Un personnage
 public static void gestionDuHero(int numHero){
@@ -200,7 +201,7 @@ public void gestionInventory(){
 	{
 		Scanner sc = new Scanner(System.in);
 		Scanner sc2 = new Scanner(System.in);
-		Character myHero = null;
+		Character myHero;
 
 		int vocation = 0;
 		System.out.println("Guerrier(1) ou Mage(2) ?");
@@ -247,9 +248,41 @@ public void gestionInventory(){
 			Event myEvent = new Event();
 			monDonjon.add(myEvent);
 		}
-		System.out.println(monDonjon.get(2).getTest());
-		System.out.println(monDonjon.get(60).getTest());
+		
+		feedDonjon();
+		
 	}
+	
+	public static void feedDonjon() {
+		Troll[] myTrolls = new Troll[6];
+		Sorcerer[] mySorcerers = new Sorcerer[4];
+		Succubus[] mySuccubus = new Succubus[4];
+
+		myTrolls[0] = new Troll(80);
+		myTrolls[1] = new Troll(60);
+		myTrolls[2] = new Troll(40);
+		myTrolls[3] = new Troll(30);
+		myTrolls[4] = new Troll(20);
+		myTrolls[5] = new Troll(15);
+		
+		mySorcerers[0] = new Sorcerer(75);
+		mySorcerers[1] = new Sorcerer(50);
+		mySorcerers[2] = new Sorcerer(25);
+		mySorcerers[3] = new Sorcerer(15);	
+		
+		mySuccubus[0] = new Succubus(75);
+		mySuccubus[1] = new Succubus(50);
+		mySuccubus[2] = new Succubus(25);
+		mySuccubus[3] = new Succubus(15);	
+		
+		for(int i = 0; i < 6; i++){
+			int localisation =  1 + (int)(Math.random() * ((limitSquares - 1) + 1));
+			monDonjon.get(localisation).setEnemy(myTrolls[i]);
+		}
+		
+		
+	}
+
 	
 	public static void move()
 	{

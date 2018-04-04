@@ -1,4 +1,5 @@
-package main.java.heroes;
+package main.java.heroes.items;
+
 
 public class AttackItem {
 	protected String nameAttackItem = "None";
