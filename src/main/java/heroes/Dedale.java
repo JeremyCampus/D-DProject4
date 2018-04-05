@@ -273,16 +273,16 @@ public void gestionInventory(){
 	
 	public static void generateBoxes()
 	{
-		BoxShield[] myShield = new BoxShield[3];
-		BoxProtectionPotion[] myProtectionPotion = new BoxProtectionPotion[3];
+		BoxDefense[] myBoxDefense = new BoxDefense[3];
+		BoxAttack[] myBoxAttack = new BoxAttack[3];
 
-		myShield[0] = new BoxShield();
-		myShield[1] = new BoxShield();
-		myShield[2] = new BoxShield();
+		myBoxDefense[0] = new BoxDefense();
+		myBoxDefense[1] = new BoxDefense();
+		myBoxDefense[2] = new BoxDefense();
 		
-		myProtectionPotion[0] = new BoxProtectionPotion();
-		myProtectionPotion[1] = new BoxProtectionPotion();
-		myProtectionPotion[2] = new BoxProtectionPotion();
+		myBoxAttack[0] = new BoxAttack();
+		myBoxAttack[1] = new BoxAttack();
+		myBoxAttack[2] = new BoxAttack();
 	
 
 		
@@ -296,7 +296,7 @@ public void gestionInventory(){
 				System.out.println("TEST" + Dedale.monDonjon.get(localisation));
 
 				if(Dedale.monDonjon.get(localisation) instanceof Event) {
-					Dedale.monDonjon.set(localisation, myShield[i]);
+					Dedale.monDonjon.set(localisation, myBoxDefense[i]);
 					shieldOk = true;
 				}
 			}while(shieldOk != true || limiteBreak >= 10 );
@@ -311,7 +311,7 @@ public void gestionInventory(){
 				System.out.println("TEST" + Dedale.monDonjon.get(localisation));
 
 				if(Dedale.monDonjon.get(localisation) instanceof Event) {
-					Dedale.monDonjon.set(localisation, myProtectionPotion[i]);
+					Dedale.monDonjon.set(localisation, myBoxAttack[i]);
 					protecPotionOK = true;
 				}
 			}while(protecPotionOK != true || limiteBreak >= 10 );

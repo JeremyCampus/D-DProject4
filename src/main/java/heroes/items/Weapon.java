@@ -1,11 +1,11 @@
 package main.java.heroes.items;
 
 
-public class Arme extends AttackItem{
+public class Weapon extends AttackItem{
 
 	protected String type = "Arme";
 
-	public Arme() {
+	public Weapon() {
 
 	}
 

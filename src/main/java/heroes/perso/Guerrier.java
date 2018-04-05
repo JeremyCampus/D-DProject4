@@ -8,8 +8,8 @@ import java.util.List;
 // import java.util.ListIterator;
 
 public class Guerrier extends Character{
-	protected static List<Arme> inventory = new ArrayList<Arme>();	
-	public Arme myAttackItem = new Arme();
+	protected static List<Weapon> inventory = new ArrayList<Weapon>();	
+	public Weapon myAttackItem = new Weapon();
 	public Shield myDefenseItem = new Shield();
 	protected int damages =  FA + myAttackItem.getItemAttackLevel();
 	protected boolean shield = false;
@@ -74,7 +74,7 @@ public class Guerrier extends Character{
 	public void ajouterArmeSpell(){
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Une arme ? ");
-		myAttackItem = new Arme();
+		myAttackItem = new Weapon();
 
 		System.out.println("Son nom : ");
 		String str1 = sc.nextLine();
@@ -100,7 +100,7 @@ public class Guerrier extends Character{
 //				System.out.println("_____________________________________________________________________");
 //				System.out.println("---");
 //				System.out.println("Afficher l'inventaire ? = 1");
-//				System.out.println("Afficher l'arme actuelle pour se battre ? = 2");
+//				System.out.println("Afficher l'Weapon actuelle pour se battre ? = 2");
 //				System.out.println("Choisir l'arme pour se battre ? = 3");
 //				System.out.println("Quitter = 4");
 //				System.out.println("---");

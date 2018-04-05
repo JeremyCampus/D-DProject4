@@ -1,4 +1,4 @@
-package main.java.heroes.items;
+package main.java.heroes.items ;
 
 import main.java.heroes.*;
 
