@@ -71,8 +71,8 @@ public abstract class Interface extends Dedale{
 		System.out.println("|||||||||||||||||||||| INVENTAIRE DE "+ listeHeroes.get(0).getName() +" ||||||||||||||||||||||");
 		System.out.println("_____________________________________________________________________");
 		System.out.println("-VOUS ETES SUR LA CASE N " + getmySquare() + " -");
-		System.out.println("Aller sur une case ? = 1");
-		System.out.println("Afficher Toutes les cases ? = 2");
+		System.out.println("Afficher l'Inventaire? = 1");
+		System.out.println("Quel arme utilise le Hero actuellement ? = 2");
 		System.out.println(" = 3");
 		System.out.println("Quitter = 4");
 		System.out.println("---");
@@ -97,7 +97,7 @@ public abstract class Interface extends Dedale{
 		System.out.println("---");
 		System.out.println("Changer Case ? = 1");
 		System.out.println("Afficher tout = 2");
-		System.out.println(" ? = 3");
+		System.out.println("Ajouter Arme Hero ? = 3");
 		System.out.println("Quitter = 4");
 		System.out.println("---");
 		System.out.println("");

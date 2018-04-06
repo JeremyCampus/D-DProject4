@@ -87,53 +87,6 @@ public class Guerrier extends Character{
 	}
 
 
-//	public void gestionInventory(){
-//		Scanner sc = new Scanner(System.in);
-//		boolean quitter = false;	
-//		clearZone();		  
-//			do{
-//				System.out.println("");
-//				System.out.println("");
-//				System.out.println("");
-//				System.out.println("_____________________________________________________________________");
-//				System.out.println("|||||||||||||||||||||| INVENTAIRE DE "+ getName() +" ||||||||||||||||||||||");
-//				System.out.println("_____________________________________________________________________");
-//				System.out.println("---");
-//				System.out.println("Afficher l'inventaire ? = 1");
-//				System.out.println("Afficher l'Weapon actuelle pour se battre ? = 2");
-//				System.out.println("Choisir l'arme pour se battre ? = 3");
-//				System.out.println("Quitter = 4");
-//				System.out.println("---");
-//				System.out.println("");
-//				System.out.println("");
-//				System.out.println("");
-//				System.out.println("");
-//				System.out.println("");
-//				String str2 = sc.nextLine();
-//				clearZone();
-//				System.out.println("_____________________________________________________________________");
-//				System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
-//				System.out.println("_____________________________________________________________________");
-//				switch (str2)
-//				{
-//					case "1":
-//						afficherInventory();
-//						break;            
-//					case "2":
-//						System.out.println(getName() + " utilise actuellement l'arme : " + myAttackItem.getNameItemAttack());
-//						break;  
-//					case "3":
-//						selectionnerArme();
-//						break;        	
-//					case "4":
-//						quitter = true;
-//						break;   						  
-//					default:
-//						System.out.println("");
-//						break;        
-//				}
-//			}while(quitter != true);
-//	}
 
 	public void afficherInventory(){
 		System.out.println("______________||_INVENTAIRE_||______________");

@@ -95,7 +95,9 @@ public static void gestionDuHero(int numHero){
 				listeHeroes.get(numHero).afficherInventory();			  
 				break;
 			case "3":
-				listeHeroes.get(numHero).gestionInventory();			  
+				Dedale.gestionInventory(numHero);	
+				System.out.println("TEST2");
+
 				break;       
 			case "4":
 				exit = true;
@@ -108,9 +110,10 @@ public static void gestionDuHero(int numHero){
 	}while(exit != true);
 }
 
-public void gestionInventory(){
+public static void gestionInventory(int numHero){
+	System.out.println("TEST");
+	boolean quitter = false;
 	Scanner sc = new Scanner(System.in);
-	boolean quitter = false;	
 	Interface.clearZone();		  
 		do{
 			Interface.menuGestionInventory();
@@ -122,10 +125,10 @@ public void gestionInventory(){
 					listeHeroes.get(0).afficherInventory();
 					break;            
 				case "2":
-						System.out.println(listeHeroes.get(0).getName() + " utilise actuellement l'arme : " + listeHeroes.get(0).myAttackItem.getNameItemAttack());
+					System.out.println(listeHeroes.get(0).getName() + " utilise actuellement l'arme : " + listeHeroes.get(0).myAttackItem.getNameItemAttack());
 					break;  
 				case "3":
-						listeHeroes.get(0).selectionnerArme();
+					listeHeroes.get(0).selectionnerArme();
 					break;        	
 				case "4":
 					quitter = true;
@@ -286,7 +289,7 @@ public void gestionInventory(){
 	
 
 		
-///////////////SHIELDS////////////////////////////////////////////////////////////////
+///////////////Defense////////////////////////////////////////////////////////////////
 		for(int i = 0; i < 3; i++){
 			boolean shieldOk = false;
 			int limiteBreak = 0;
@@ -301,7 +304,7 @@ public void gestionInventory(){
 				}
 			}while(shieldOk != true || limiteBreak >= 10 );
 		}
-///////////////PROTECTION POTIONS////////////////////////////////////////////////////////////////
+///////////////ATTACK////////////////////////////////////////////////////////////////
 		for(int i = 0; i < 3; i++){
 			boolean protecPotionOK = false;
 			int limiteBreak = 0;
@@ -328,6 +331,8 @@ public void gestionInventory(){
 		deplacement = getmySquare() + 1 + (int)(Math.random() * ((6 - 1) + 1));
 		setmySquare(deplacement);
 	}
+//////////CHEAT CODE CONSOLE/////////////////
+
 	
 	public static void cheatCodeConsole() {
 		Scanner sc = new Scanner(System.in);

@@ -19,15 +19,6 @@ public abstract class Character {
 		int machin = 2;
 	}
 
-	// public Character(String myName, String newImage, int newLife, int newStrenght) {
-	// 	setName(myName);
-	// 	setImage(newImage);
-	// 	setLife(newLife);
-	// 	setStrength(newStrenght);
-	// 	mettreAJour();1
-	// }
-	
-
 	
 	public void mettreAJour(){
 		damages = FA;

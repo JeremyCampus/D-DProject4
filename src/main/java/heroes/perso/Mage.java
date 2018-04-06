@@ -69,21 +69,7 @@ public class Mage extends Character{
 		 +"\n"
 		 +"\n_________________________________________";
 	}
-	// public void afficher() {
-	// 	System.out.println("_________________________________________");
-	// 	System.out.println("");
-	// 	System.out.println("Your Name : " + name);
-	// 	System.out.println("Your Profession : " + metier);
-	// 	System.out.println("Your Image : " + image);
-	// 	System.out.println("Your Life : " + life);
-	// 	System.out.println("Your strength : " + strength);
-	// 	System.out.println("---");
-	// 	System.out.println("Your Spell is " + myAttackItem.getNameSpell() + " who deliver " + myAttackItem.getItemAttackLevel() + " damages.");
-	// 	System.out.println("Your shield : " + shield);
-	// 	System.out.println("Your inventory has " + inventory.size() + " Spells.");		
-	// 	System.out.println("");
-	// 	System.out.println("_________________________________________");
-	// }
+	
 
 
 	public void ajouterSpellSpell(){
@@ -107,61 +93,6 @@ public class Mage extends Character{
 		System.out.flush();					//CLEAR TERMINAL
 	}
 
-	public void gestionInventory(){
-		Scanner sc = new Scanner(System.in);
-		boolean quitter = false;	
-		clearZone();		  
-			do{
-				System.out.println("");
-				System.out.println("");
-				System.out.println("");
-				System.out.println("_____________________________________________________________________");
-				System.out.println("|||||||||||||||||||||| INVENTAIRE DE "+ getName() +" ||||||||||||||||||||||");
-				System.out.println("_____________________________________________________________________");
-				System.out.println("---");
-				System.out.println("Afficher l'inventaire ? = 1");
-				System.out.println("Creer une Spell pour se battre et le noter dans l'inventaire ? = 2");
-				System.out.println("Afficher l'Spell actuelle pour se battre ? = 3");
-				System.out.println("Choisir l'Spell pour se battre ? = 4");
-				System.out.println("Supprimer un objet de l'inventaire ? = 5");
-				System.out.println("Quitter = 6");
-				System.out.println("---");
-				System.out.println("");
-				System.out.println("");
-				System.out.println("");
-				System.out.println("");
-				System.out.println("");
-				String str2 = sc.nextLine();
-				clearZone();
-				System.out.println("_____________________________________________________________________");
-				System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
-				System.out.println("_____________________________________________________________________");
-				switch (str2)
-				{
-					case "1":
-						afficherInventory();
-						break;        
-					case "2":
-						ajouterSpellSpell();			  
-						break;        
-					case "3":
-						System.out.println(getName() + " utilise actuellement l'Spell : " + myAttackItem.getNameItemAttack());
-						break;  
-					case "4":
-						selectionnerSpell();
-						break;       
-					case "5":
-						supprimerSpell();
-						break;   	
-					case "6":
-						quitter = true;
-						break;   						  
-					default:
-						System.out.println("");
-						break;        
-				}
-			}while(quitter != true);
-	}
 
 	public void afficherInventory(){
 		System.out.println("______________||_INVENTAIRE_||______________");
