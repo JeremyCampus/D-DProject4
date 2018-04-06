@@ -16,7 +16,7 @@ public abstract class Character {
 
 	
 	public Character() {
-		int machin = 2;
+
 	}
 
 	
