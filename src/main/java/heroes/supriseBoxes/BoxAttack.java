@@ -3,7 +3,7 @@ package main.java.heroes.supriseBoxes;
 import main.java.heroes.*;
 
 
-public class BoxAttack extends Event{
+public class BoxAttack extends Box{
 	public String nameEvent = "BoxAttack";
 	public int protection = 1;
 	
