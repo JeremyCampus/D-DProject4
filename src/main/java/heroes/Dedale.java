@@ -231,16 +231,16 @@ public static void gestionInventory(int numHero){
 			boolean trollOk = false;
 			int limiteBreak = 0;
 			do {
+				
 				limiteBreak++;
 				int localisation =  (int)(Math.random() * ((limitSquares - 1) + 1));
-				System.out.println(localisation);
-				System.out.println("TEST " +localisation + " " + Dedale.monDonjon.get(localisation) + " ");
+				System.out.println("Je suis troll n " +i + " a la place n "+localisation);
 
-				if(Dedale.monDonjon.get(localisation) instanceof Event) {
+				if(Dedale.monDonjon.get(localisation).getClass().equals(Event.class)) {
 					Dedale.monDonjon.set(localisation, myTrolls[i]);
 					trollOk = true;
 				}
-			}while(trollOk != true || limiteBreak >= 10 );
+			}while(trollOk != true);
 		}
 ///////////////SORCERER////////////////////////////////////////////////////////////////
 		for(int i = 0; i < 4; i++){
@@ -249,13 +249,13 @@ public static void gestionInventory(int numHero){
 			do {
 				limiteBreak++;
 				int localisation =  (int)(Math.random() * ((limitSquares - 1) + 1));
-				System.out.println("TEST" + Dedale.monDonjon.get(localisation));
+				System.out.println("Je suis Sorcerer n " +i + " a la place n "+localisation );
 
-				if(Dedale.monDonjon.get(localisation) instanceof Event) {
+				if(Dedale.monDonjon.get(localisation).getClass().equals(Event.class)) {
 					Dedale.monDonjon.set(localisation, mySorcerers[i]);
 					sorcerersOK = true;
 				}
-			}while(sorcerersOK != true || limiteBreak >= 10 );
+			}while(sorcerersOK != true);
 		}
 ///////////////SUCCUBUS////////////////////////////////////////////////////////////////
 		for(int i = 0; i < 4; i++){
@@ -264,24 +264,24 @@ public static void gestionInventory(int numHero){
 			do {
 				limiteBreak++;
 				int localisation = (int)(Math.random() * ((limitSquares - 1) + 1));
-				System.out.println("TEST" + Dedale.monDonjon.get(localisation));
+				System.out.println("Je suis Succubus n " +i + " a la place n "+localisation );
 
-				if(Dedale.monDonjon.get(localisation) instanceof Event) {
+				if(Dedale.monDonjon.get(localisation).getClass().equals(Event.class)) {
 					Dedale.monDonjon.set(localisation, mySuccubus[i]);
 					succubusOK = true;
 				}
-			}while(succubusOK != true || limiteBreak >= 10 );
+			}while(succubusOK != true);
 		}
 	}
 	
 	public static void generateBoxes()
 	{
-		BoxDefense[] myBoxDefense = new BoxDefense[3];
+		BoxWeapon[] myBoxWeapon = new BoxWeapon[3];
 		BoxAttack[] myBoxAttack = new BoxAttack[3];
 
-		myBoxDefense[0] = new BoxDefense();
-		myBoxDefense[1] = new BoxDefense();
-		myBoxDefense[2] = new BoxDefense();
+		myBoxWeapon[0] = new BoxWeapon("1");
+		myBoxWeapon[1] = new BoxWeapon("2");
+		myBoxWeapon[2] = new BoxWeapon("3");
 		
 		myBoxAttack[0] = new BoxAttack();
 		myBoxAttack[1] = new BoxAttack();
@@ -296,13 +296,13 @@ public static void gestionInventory(int numHero){
 			do {
 				limiteBreak++;
 				int localisation = (int)(Math.random() * ((limitSquares - 1) + 1));
-				System.out.println("TEST" + Dedale.monDonjon.get(localisation));
+				System.out.println("Je suis BoxAttaque n " +i + " a la place n "+localisation );
 
-				if(Dedale.monDonjon.get(localisation) instanceof Event) {
-					Dedale.monDonjon.set(localisation, myBoxDefense[i]);
+				if(Dedale.monDonjon.get(localisation).getClass().equals(Event.class)) {
+					Dedale.monDonjon.set(localisation, myBoxWeapon[i]);
 					shieldOk = true;
 				}
-			}while(shieldOk != true || limiteBreak >= 10 );
+			}while(shieldOk != true);
 		}
 ///////////////ATTACK////////////////////////////////////////////////////////////////
 		for(int i = 0; i < 3; i++){
@@ -311,13 +311,13 @@ public static void gestionInventory(int numHero){
 			do {
 				limiteBreak++;
 				int localisation = (int)(Math.random() * ((limitSquares - 1) + 1));
-				System.out.println("TEST" + Dedale.monDonjon.get(localisation));
+				System.out.println("Je suis boxProtec n " +i + " a la place n "+localisation );
 
-				if(Dedale.monDonjon.get(localisation) instanceof Event) {
+				if(Dedale.monDonjon.get(localisation).getClass().equals(Event.class)) {
 					Dedale.monDonjon.set(localisation, myBoxAttack[i]);
 					protecPotionOK = true;
 				}
-			}while(protecPotionOK != true || limiteBreak >= 10 );
+			}while(protecPotionOK != true);
 		}
 
 	}

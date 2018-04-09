@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Guerrier extends Character{
 	protected static List<Weapon> inventory = new ArrayList<Weapon>();	
-	public Weapon myAttackItem = new Weapon();
+	public Weapon myAttackItem = new Weapon("1");
 	public Shield myDefenseItem = new Shield();
 	protected int damages =  FA + myAttackItem.getItemAttackLevel();
 	protected boolean shield = false;
@@ -74,7 +74,7 @@ public class Guerrier extends Character{
 	public void ajouterArmeSpell(){
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Une arme ? ");
-		myAttackItem = new Weapon();
+		myAttackItem = new Weapon("1");
 
 		System.out.println("Son nom : ");
 		String str1 = sc.nextLine();

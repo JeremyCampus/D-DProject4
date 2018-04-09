@@ -8,4 +8,6 @@ public class Item {
 
 	}	
 
+	public String nomArme() { return "none";}
+
 }

@@ -1,5 +1,7 @@
 package main.java.heroes.items;
 
+import java.util.ArrayList;
+import java.util.List;
 
 public class AttackItem extends Item{
 	protected int AttackItemDamage = 1;

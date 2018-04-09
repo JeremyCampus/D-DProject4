@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Mage extends Character{
 	static List<Spell> inventory = new ArrayList<Spell>();	
-	protected Spell myAttackItem = new Spell();
+	protected Spell myAttackItem = new Spell("1");
 	protected int damages =  FA + myAttackItem.getItemAttackLevel();
 	protected boolean shield = false;
 	protected String metier = "Mage";
@@ -75,7 +75,7 @@ public class Mage extends Character{
 	public void ajouterSpellSpell(){
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Une Spell ? ");
-		myAttackItem = new Spell();
+		myAttackItem = new Spell("1");
 
 		System.out.println("Son nom : ");
 		String str1 = sc.nextLine();
