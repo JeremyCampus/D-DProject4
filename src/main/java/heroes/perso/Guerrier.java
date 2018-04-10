@@ -1,5 +1,6 @@
 package main.java.heroes.perso;
 import main.java.heroes.items.*;
+import main.java.heroes.items.attack.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -8,9 +9,10 @@ import java.util.List;
 // import java.util.ListIterator;
 
 public class Guerrier extends Character{
-	protected static List<Weapon> inventory = new ArrayList<Weapon>();	
-	public Weapon myAttackItem = new Weapon("1");
-	public Shield myDefenseItem = new Shield();
+	protected static List<Weapon> armament = new ArrayList<Weapon>();	
+
+	public Weapon myAttackItem = new Weapon();
+	public Weapon myDefenseItem = new Weapon();
 	protected int damages =  FA + myAttackItem.getItemAttackLevel();
 	protected boolean shield = false;
 	protected String metier = "Guerrier";
@@ -18,15 +20,18 @@ public class Guerrier extends Character{
 	
 	public Guerrier() {
 		super();
+		myAttackItem = new Bow();
 		inventory.add(myAttackItem);
+		
 	}
 
 
 	public Guerrier(String myName) {
 		super();
 		name = myName;
-		// inventory.add(myAttackItem);
-	}
+		myAttackItem = new Bow();
+		inventory.add(myAttackItem);
+		}
 
 
 	public Guerrier(String myName, String newImage, int newLife, int newStrenght) {
@@ -34,7 +39,8 @@ public class Guerrier extends Character{
 		setImage(newImage);
 		setLife(newLife);
 		setFA(newStrenght);
-		// inventory.add(myAttackItem);
+		myAttackItem = new Bow();
+		inventory.add(myAttackItem);
 		mettreAJour();
 	}
 	
@@ -62,7 +68,7 @@ public class Guerrier extends Character{
 		+"\nYour Profession : " + metier 
 		+ "\nYour Image : " + image 
 		+"\nYour Life : " + life +" --- "
-		 +"\nYour weapon is " + myAttackItem.getNameItemAttack() + " who deliver " + myAttackItem.getItemAttackLevel() + " damages."
+		 +"\nYour weapon is " + myAttackItem + " who deliver " + myAttackItem.getItemAttackLevel() + " damages."
 		 +"\nYour shield : " + shield
 		 +"\nYour inventory has " + inventory.size() + " Weapons."	
 		 +"\n"
@@ -74,17 +80,24 @@ public class Guerrier extends Character{
 	public void ajouterArmeSpell(){
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Une arme ? ");
-		myAttackItem = new Weapon("1");
+		myAttackItem = new Weapon();
 
 		System.out.println("Son nom : ");
 		String str1 = sc.nextLine();
-		myAttackItem.setNameItemAttack(str1);
+		myAttackItem.setName(str1);
 
 		System.out.println("Son niveau de puissance : ");
 		int str2 = sc.nextInt();
 		myAttackItem.setItemAttackLevel(str2);
 		inventory.add(myAttackItem);
 	}
+	
+	
+	public void ajouterArmeSpell(Weapon myWeapon){
+		myAttackItem = myWeapon;
+		inventory.add(myAttackItem);
+	}
+
 
 
 
@@ -97,7 +110,7 @@ public class Guerrier extends Character{
 		for(int i = 0; i < inventory.size(); i++){
 			System.out.println("");
 			System.out.println("");
-			System.out.println("Voici l'arme : " + inventory.get(i).getNameItemAttack() + " | Numero : " + i);
+			System.out.println("Voici l'arme : " + inventory.get(i).getName() + " | Numero : " + i);
 			System.out.println("Voici sa Puissance : " + inventory.get(i).getItemAttackLevel());;
 		}	
 
@@ -113,8 +126,8 @@ public class Guerrier extends Character{
 		System.out.println("                     (Indiquez son numero)");
 		int str2 = sc.nextInt();
 		sc.nextLine();
-		myAttackItem= inventory.get(str2);
-		System.out.println(getName() + " utilise actuellement l'arme : " + myAttackItem.getNameItemAttack());
+		myAttackItem= armament.get(str2);
+		System.out.println(getName() + " utilise actuellement l'arme : " + myAttackItem.getName());
 	}
 
 	public void supprimerArme()

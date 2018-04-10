@@ -15,13 +15,19 @@ public abstract class Interface extends Dedale{
 	}
 	
 	public static void menuPrincipal() {
-		if(Dedale.monDonjon.get(mySquare) instanceof Enemy) {
-			System.out.println("---");
-			System.out.println("Vous etes chez un ennemi : " + Dedale.monDonjon.get(mySquare).afficher());
-		}
-		if(Dedale.monDonjon.get(mySquare) instanceof Box) {
-			System.out.println("---");
-			System.out.println("Vous etes tombé sur un trésor ! " + Dedale.monDonjon.get(mySquare).afficher());
+		
+		if(!Dedale.monDonjon.get(mySquare).eventFinished)
+		{
+			if(Dedale.monDonjon.get(mySquare) instanceof Enemy) {
+				System.out.println("---");
+				System.out.println("Vous etes chez un ennemi, prudence... : " + Dedale.monDonjon.get(mySquare).afficher());
+			}
+			if(Dedale.monDonjon.get(mySquare) instanceof Box) {
+				System.out.println("---");
+				System.out.println("Vous appercevez un étrange coffre au loin ! " + Dedale.monDonjon.get(mySquare).afficher());
+			}
+		}else {
+			System.out.println("Evenement terminé, continuez d'avancer ! ");
 		}
 		System.out.println("_____________________________________________________________________");
 		System.out.println("|||||||||||||||||||||| QUE VOULEZ VOUS FAIRE ? ||||||||||||||||||||||");
@@ -31,7 +37,13 @@ public abstract class Interface extends Dedale{
 		System.out.println("Afficher le personnages ? = 1");
 		System.out.println("Selectionner un personnage ? = 2");
 		System.out.println("Vous soigner ? ( " + listeHeroes.get(0).getNbHealingPotion() + " potions restante(s)");
-		System.out.println("Vous deplacer ? = 4");
+		
+		if(Dedale.monDonjon.get(mySquare).getClass().equals(Event.class)||Dedale.monDonjon.get(mySquare).eventFinished)
+		{
+			System.out.println("Vous deplacer ? = 4");
+		}else {
+			System.out.println("Vous entrer dans la salle ? = 4");
+		}
 		System.out.println("Quitter = 5");
 		System.out.println("---");
 		System.out.println("");
@@ -97,8 +109,9 @@ public abstract class Interface extends Dedale{
 		System.out.println("---");
 		System.out.println("Changer Case ? = 1");
 		System.out.println("Afficher tout = 2");
-		System.out.println("Ajouter Arme Hero ? = 3");
-		System.out.println("Quitter = 4");
+		System.out.println("//Ajouter Arme Hero ? = 3");
+		System.out.println("Ajouter Potion ? = 4 ==> "+ listeHeroes.get(0).getNbHealingPotion() + " potions restante(s)");
+		System.out.println("Quitter = 5");
 		System.out.println("---");
 		System.out.println("");
 		System.out.println("");

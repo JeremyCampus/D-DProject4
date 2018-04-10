@@ -12,4 +12,8 @@ public class Succubus extends Enemy{
 	public String afficher() {
 		return "Je suis : une Succubus";
 	}
+	public void generateEvent() {
+		System.out.println(afficher() + " a été tué.");
+		eventFinished = true;
+	}
 }

@@ -12,4 +12,8 @@ public class Sorcerer extends Enemy{
 		return "Je suis : un Sorcerer";
 	}
 
+	public void generateEvent() {
+		System.out.println(afficher() + " a été tué.");
+		eventFinished = true;
+	}
 }

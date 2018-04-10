@@ -5,19 +5,22 @@ import java.util.Scanner;
 import java.util.List;
 
 import main.java.heroes.perso.*;
+import main.java.heroes.supriseBoxes.diverse.*;
 import main.java.heroes.perso.Character;
 import main.java.heroes.enemy.*;
 import main.java.heroes.supriseBoxes.*;
 
 public class Dedale {
 
-	static List<Character> listeHeroes = new ArrayList<Character>();
-	static List<Event> monDonjon = new ArrayList<Event>();
+	protected static List<Character> listeHeroes = new ArrayList<Character>();
+	protected static List<Event> monDonjon = new ArrayList<Event>();
 	protected static int mySquare = 0;
 	protected static int limitSquares = 63;
 
 	
-
+	public static List<Character> getListeHeroes() {
+		return listeHeroes;
+	}
 
 
 	public static void main(String[] args) {
@@ -50,7 +53,16 @@ public class Dedale {
 							///////////Vous soigner////////////////////////////////////////////////
 							break;       
 						case "4":
-							move();
+							if(Dedale.monDonjon.get(mySquare).getClass().equals(Event.class))
+							{
+								Dedale.monDonjon.get(mySquare).eventFinished = true;
+							}
+							if(Dedale.monDonjon.get(mySquare).eventFinished)
+							{
+								move();
+							}else {
+								Dedale.monDonjon.get(mySquare).generateEvent();
+							}
 							break;   
 						case "5":
 							quitter = true;
@@ -125,7 +137,7 @@ public static void gestionInventory(int numHero){
 					listeHeroes.get(0).afficherInventory();
 					break;            
 				case "2":
-					System.out.println(listeHeroes.get(0).getName() + " utilise actuellement l'arme : " + listeHeroes.get(0).myAttackItem.getNameItemAttack());
+					System.out.println(listeHeroes.get(0).getName() + " utilise actuellement l'arme : " + listeHeroes.get(0).myAttackItem);
 					break;  
 				case "3":
 					listeHeroes.get(0).selectionnerArme();
@@ -278,6 +290,7 @@ public static void gestionInventory(int numHero){
 	{
 		BoxWeapon[] myBoxWeapon = new BoxWeapon[3];
 		BoxAttack[] myBoxAttack = new BoxAttack[3];
+		BoxHealingPotion[] myHealingPotion = new BoxHealingPotion[3];
 
 		myBoxWeapon[0] = new BoxWeapon("1");
 		myBoxWeapon[1] = new BoxWeapon("2");
@@ -286,10 +299,13 @@ public static void gestionInventory(int numHero){
 		myBoxAttack[0] = new BoxAttack();
 		myBoxAttack[1] = new BoxAttack();
 		myBoxAttack[2] = new BoxAttack();
-	
+
+		myHealingPotion[0] = new BoxHealingPotion();
+		myHealingPotion[1] = new BoxHealingPotion();
+
 
 		
-///////////////Defense////////////////////////////////////////////////////////////////
+///////////////Box weapon////////////////////////////////////////////////////////////////
 		for(int i = 0; i < 3; i++){
 			boolean shieldOk = false;
 			int limiteBreak = 0;
@@ -304,7 +320,7 @@ public static void gestionInventory(int numHero){
 				}
 			}while(shieldOk != true);
 		}
-///////////////ATTACK////////////////////////////////////////////////////////////////
+///////////////boxAttack////////////////////////////////////////////////////////////////
 		for(int i = 0; i < 3; i++){
 			boolean protecPotionOK = false;
 			int limiteBreak = 0;
@@ -320,6 +336,21 @@ public static void gestionInventory(int numHero){
 			}while(protecPotionOK != true);
 		}
 
+///////////////HEALING POTION////////////////////////////////////////////////////////////////
+	for(int i = 0; i < 2; i++){
+		boolean healingPotionOK = false;
+		int limiteBreak = 0;
+		do {
+			limiteBreak++;
+			int localisation = (int)(Math.random() * ((limitSquares - 1) + 1));
+			System.out.println("Je suis healingPotionOK n " +i + " a la place n "+localisation );
+
+			if(Dedale.monDonjon.get(localisation).getClass().equals(Event.class)) {
+				Dedale.monDonjon.set(localisation, myHealingPotion[i]);
+				healingPotionOK = true;
+			}
+		}while(healingPotionOK != true);
+	}
 	}
 	
 	
@@ -353,6 +384,10 @@ public static void gestionInventory(int numHero){
 					}
 					break;
 				case "4":
+					BoxHealingPotion newHealingPotion = new BoxHealingPotion();
+					newHealingPotion.generateEvent();
+					break;
+				case "5":
 					quitterCheatCodes = true;
 					break;
 				default:

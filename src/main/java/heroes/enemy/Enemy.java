@@ -18,4 +18,6 @@ public class Enemy extends Event{
 	public String afficher() {
 		return "Je suis : Enemy";
 	}
+	
+
 }

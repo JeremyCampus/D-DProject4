@@ -12,5 +12,19 @@ public class Item {
 	public String toString() {
 		return type;
 	}
+	
+	public String getName() {
+		return type;
+	}
+	
+	public void setName(String newName) {
+		type = newName;
+	}
 
+	public int getItemAttackLevel(){
+		return 0;
+	}
+	
+	public void setItemAttackLevel(int newAttackLevel){
+	}
 }

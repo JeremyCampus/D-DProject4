@@ -1,17 +1,17 @@
 package main.java.heroes.perso;
+import main.java.heroes.items.*;
+import main.java.heroes.items.attack.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import main.java.heroes.*;
-import main.java.heroes.items.*;
-
 import java.util.List;
+
 // import java.util.ListIterator;
 
 public class Mage extends Character{
-	static List<Spell> inventory = new ArrayList<Spell>();	
-	protected Spell myAttackItem = new Spell("1");
+	protected static List<Item> inventory = new ArrayList<Item>();	
+	public Item myAttackItem = new Item();
+	public Item myDefenseItem = new Item();
 	protected int damages =  FA + myAttackItem.getItemAttackLevel();
 	protected boolean shield = false;
 	protected String metier = "Mage";
@@ -19,7 +19,7 @@ public class Mage extends Character{
 	
 	public Mage() {
 		super();
-		// inventory.add(myAttackItem);
+		inventory.add(myAttackItem);
 	}
 
 
@@ -63,23 +63,23 @@ public class Mage extends Character{
 		+"\nYour Profession : " + metier 
 		+ "\nYour Image : " + image 
 		+"\nYour Life : " + life +" --- "
-		 +"\nYour Spell is " + myAttackItem.getNameItemAttack() + " who deliver " + myAttackItem.getItemAttackLevel() + " damages."
+		 +"\nYour Spell is " + myAttackItem + " who deliver " + myAttackItem.getItemAttackLevel() + " damages."
 		 +"\nYour shield : " + shield
 		 +"\nYour inventory has " + inventory.size() + " Spells."	
 		 +"\n"
 		 +"\n_________________________________________";
 	}
-	
 
 
-	public void ajouterSpellSpell(){
+
+	public void ajouterArmeSpell(){
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Une Spell ? ");
-		myAttackItem = new Spell("1");
+		System.out.println("Une arme ? ");
+		myAttackItem = new Item();
 
 		System.out.println("Son nom : ");
 		String str1 = sc.nextLine();
-		myAttackItem.setNameItemAttack(str1);
+		myAttackItem.setName(str1);
 
 		System.out.println("Son niveau de puissance : ");
 		int str2 = sc.nextInt();
@@ -87,11 +87,6 @@ public class Mage extends Character{
 		inventory.add(myAttackItem);
 	}
 
-	public static void clearZone()
-	{
-		System.out.print("\033[H\033[2J");  //CLEAR TERMINAL
-		System.out.flush();					//CLEAR TERMINAL
-	}
 
 
 	public void afficherInventory(){
@@ -103,31 +98,31 @@ public class Mage extends Character{
 		for(int i = 0; i < inventory.size(); i++){
 			System.out.println("");
 			System.out.println("");
-			System.out.println("Voici le Spell : " + inventory.get(i).getNameItemAttack() + " | Numero : " + i);
+			System.out.println("Voici l'arme : " + inventory.get(i).getName() + " | Numero : " + i);
 			System.out.println("Voici sa Puissance : " + inventory.get(i).getItemAttackLevel());;
 		}	
 
-		// System.out.println("Your Spell is " + myAttackItem.getNameSpell() + " who deliver " + myAttackItem.getItemAttackLevel() + " damages.");
+		// System.out.println("Your Spell is " + myAttackItem.getNameItemAttack() + " who deliver " + myAttackItem.getItemAttackLevel() + " damages.");
 
 	}
 
-	public void selectionnerSpell()
+	public void selectionnerArme()
 	{
 		Scanner sc = new Scanner(System.in);		
 		afficherInventory();
-		System.out.println("______________||QUELLE Spell VOULEZ VOUS UTILISER||______________");
+		System.out.println("______________||QUELLE ARME VOULEZ VOUS UTILISER||______________");
 		System.out.println("                     (Indiquez son numero)");
 		int str2 = sc.nextInt();
 		sc.nextLine();
 		myAttackItem= inventory.get(str2);
-		System.out.println(getName() + " utilise actuellement l'Spell : " + myAttackItem.getNameItemAttack());
+		System.out.println(getName() + " utilise actuellement l'arme : " + myAttackItem.getName());
 	}
 
-	public void supprimerSpell()
+	public void supprimerArme()
 	{
 		Scanner sc3 = new Scanner(System.in);		
 		afficherInventory();
-		System.out.println("______________||QUELLE Spell VOULEZ VOUS SUPPRIMER||______________");
+		System.out.println("______________||QUELLE ARME VOULEZ VOUS SUPPRIMER||______________");
 		System.out.println("                     (Indiquez son numero)");
 		int str2 = sc3.nextInt();
 		sc3.nextLine();
