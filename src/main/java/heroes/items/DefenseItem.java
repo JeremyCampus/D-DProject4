@@ -1,29 +1,22 @@
 package main.java.heroes.items;
 
+import java.util.ArrayList;
+import java.util.List;
 
 public class DefenseItem extends Item{
-	protected int AttackItemDamage = 1;
-
-	public DefenseItem() {
-
-	}
-
-
-	public String getNameItemAttack(){
-		return nameAttackItem;
-	}
-
-	public int getItemAttackLevel(){
-		return AttackItemDamage;
-	}
-
+	protected int DefenseLevel = 2;
 	
-
-	public void setNameItemAttack(String newName){
-		nameAttackItem = newName;
+	public DefenseItem() {
+		type = "DefenseItem";
 	}
 
-	public void setItemAttackLevel(int newAttackItemDamage){
-		AttackItemDamage = newAttackItemDamage;
+	//GETTER SETTER attackLevel
+	public int getItemDefenseLevel(){
+		return DefenseLevel;
 	}
+	public void setItemDefenseLevel(int newAttackLevel){
+		DefenseLevel = newAttackLevel;
+	}
+	
+	
 }

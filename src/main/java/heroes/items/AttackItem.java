@@ -7,7 +7,7 @@ public class AttackItem extends Item{
 	protected int attackLevel = 25;
 	
 	public AttackItem() {
-		type = "Weapon";
+		type = "AttackItem";
 	}
 
 	//GETTER SETTER attackLevel
