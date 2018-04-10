@@ -4,28 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AttackItem extends Item{
-	protected int AttackItemDamage = 1;
-
-	public AttackItem() {
-
-	}
-
-
-	public String getNameItemAttack(){
-		return nameAttackItem;
-	}
-
-	public int getItemAttackLevel(){
-		return AttackItemDamage;
-	}
-
+	protected int attackLevel = 25;
 	
-
-	public void setNameItemAttack(String newName){
-		nameAttackItem = newName;
+	public AttackItem() {
+		type = "Weapon";
 	}
 
-	public void setItemAttackLevel(int newAttackItemDamage){
-		AttackItemDamage = newAttackItemDamage;
+	//GETTER SETTER attackLevel
+	public int getItemAttackLevel(){
+		return attackLevel;
 	}
+	public void setItemAttackLevel(int newAttackLevel){
+		attackLevel = newAttackLevel;
+	}
+	
+	
 }

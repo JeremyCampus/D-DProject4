@@ -2,12 +2,15 @@ package main.java.heroes.items;
 
 
 public class Item {
-	protected String nameAttackItem = "None";
-
+	protected String type = "None";
+	protected boolean mageUser = false;
+	protected boolean guerrierUser = false;
+	
 	public Item() {
-
 	}	
 
-	public String nomArme() { return "none";}
+	public String toString() {
+		return type;
+	}
 
 }
