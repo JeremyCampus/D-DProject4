@@ -9,9 +9,14 @@ import main.java.heroes.items.*;
 public class BoxWeapon extends BoxAttack{
 	protected Weapon myWeapon= new Weapon();
 	
-	public BoxWeapon(String monNum) {
-		myWeapon = new Sword();
-		
+	
+	public BoxWeapon(int monNum) {
+		System.out.println("Ma balise1");
+
+		myWeapon = Weapon.getWeaponList().get(monNum);
+
+		System.out.println("Ma balise1.1");
+
 	}
 	
 	public String afficher() {

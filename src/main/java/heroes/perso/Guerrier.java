@@ -1,6 +1,8 @@
 package main.java.heroes.perso;
 import main.java.heroes.items.*;
 import main.java.heroes.items.attack.*;
+import main.java.heroes.items.defense.*;
+import main.java.heroes.items.defense.Shield;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -9,10 +11,10 @@ import java.util.List;
 // import java.util.ListIterator;
 
 public class Guerrier extends Character{
-	protected static List<Weapon> armament = new ArrayList<Weapon>();	
+//	protected static List<Weapon> armament = new ArrayList<Weapon>();	
 
 	public Weapon myAttackItem = new Weapon();
-	public Weapon myDefenseItem = new Weapon();
+	public Shield myDefenseItem = new Shield(1);
 	protected int damages =  FA + myAttackItem.getItemAttackLevel();
 	protected boolean shield = false;
 	protected String metier = "Guerrier";
@@ -34,12 +36,28 @@ public class Guerrier extends Character{
 		}
 
 
-	public Guerrier(String myName, String newImage, int newLife, int newStrenght) {
+	public Guerrier(String myName, String newImage, int newLife, int newStrenght, String newWeapon) {
 		setName(myName);
 		setImage(newImage);
 		setLife(newLife);
 		setFA(newStrenght);
-		myAttackItem = new Bow();
+
+		switch(newWeapon)
+		{           
+			case "2":
+				myAttackItem = Weapon.getWeaponList().get(1);
+				Weapon.getWeaponList().remove(1);
+				break;  
+			case "3":
+				myAttackItem = Weapon.getWeaponList().get(2);
+				Weapon.getWeaponList().remove(2);
+				break;        	 						  
+			default:
+				myAttackItem = Weapon.getWeaponList().get(0);
+				Weapon.getWeaponList().remove(0);
+				break; 
+		}
+		System.out.println("TEEEEEEST : " +Weapon.getWeaponList().size());
 		inventory.add(myAttackItem);
 		mettreAJour();
 	}
@@ -126,8 +144,8 @@ public class Guerrier extends Character{
 		System.out.println("                     (Indiquez son numero)");
 		int str2 = sc.nextInt();
 		sc.nextLine();
-		myAttackItem= armament.get(str2);
-		System.out.println(getName() + " utilise actuellement l'arme : " + myAttackItem.getName());
+		myAttackItem= (Weapon) inventory.get(str2);
+		System.out.println(getName() + " utilise actuellement l'arme : " + myAttackItem);
 	}
 
 	public void supprimerArme()
@@ -145,6 +163,11 @@ public class Guerrier extends Character{
 		{
 			inventory.remove(str2);
 		}
+	}
+	
+	public String whatItemAttack()
+	{
+		return (getName() + " utilise actuellement l'arme : " + myAttackItem);
 	}
 
 }

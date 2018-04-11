@@ -9,6 +9,8 @@ import main.java.heroes.supriseBoxes.diverse.*;
 import main.java.heroes.perso.Character;
 import main.java.heroes.enemy.*;
 import main.java.heroes.supriseBoxes.*;
+import main.java.heroes.items.*;
+import main.java.heroes.items.attack.*;
 
 public class Dedale {
 
@@ -24,6 +26,7 @@ public class Dedale {
 
 
 	public static void main(String[] args) {
+		Weapon.generateWeapons();
 		createCharacter();
 		generateDonjon();
 		Scanner sc = new Scanner(System.in);
@@ -108,8 +111,6 @@ public static void gestionDuHero(int numHero){
 				break;
 			case "3":
 				Dedale.gestionInventory(numHero);	
-				System.out.println("TEST2");
-
 				break;       
 			case "4":
 				exit = true;
@@ -123,7 +124,6 @@ public static void gestionDuHero(int numHero){
 }
 
 public static void gestionInventory(int numHero){
-	System.out.println("TEST");
 	boolean quitter = false;
 	Scanner sc = new Scanner(System.in);
 	Interface.clearZone();		  
@@ -137,7 +137,7 @@ public static void gestionInventory(int numHero){
 					listeHeroes.get(0).afficherInventory();
 					break;            
 				case "2":
-					System.out.println(listeHeroes.get(0).getName() + " utilise actuellement l'arme : " + listeHeroes.get(0).myAttackItem);
+					System.out.println(listeHeroes.get(0).whatItemAttack());
 					break;  
 				case "3":
 					listeHeroes.get(0).selectionnerArme();
@@ -171,6 +171,7 @@ public static void gestionInventory(int numHero){
 
 		String newImage ="X";
 
+		
 		int newLife =999;
 //		System.out.println("Quel est votre life ?");
 //		newLife = sc.nextInt();
@@ -180,7 +181,11 @@ public static void gestionInventory(int numHero){
 //		newStrenght = sc.nextInt();	
 
 		if(vocation == 1){
-			myHero = new Guerrier(myName, newImage, newLife, newStrenght);
+
+			String newWeapon = Interface.menuListWeapon();
+
+			myHero = new Guerrier(myName, newImage, newLife, newStrenght, newWeapon);
+
 		}else{
 			myHero = new Mage(myName, newImage, newLife, newStrenght);
 		}
@@ -288,17 +293,18 @@ public static void gestionInventory(int numHero){
 	
 	public static void generateBoxes()
 	{
-		BoxWeapon[] myBoxWeapon = new BoxWeapon[3];
+		BoxWeapon[] myBoxWeapon = new BoxWeapon[Weapon.getWeaponList().size()];
+
 		BoxAttack[] myBoxAttack = new BoxAttack[3];
 		BoxHealingPotion[] myHealingPotion = new BoxHealingPotion[3];
 
-		myBoxWeapon[0] = new BoxWeapon("1");
-		myBoxWeapon[1] = new BoxWeapon("2");
-		myBoxWeapon[2] = new BoxWeapon("3");
-		
-		myBoxAttack[0] = new BoxAttack();
-		myBoxAttack[1] = new BoxAttack();
-		myBoxAttack[2] = new BoxAttack();
+		myBoxWeapon[0] = new BoxWeapon(0);
+		myBoxWeapon[1] = new BoxWeapon(1);
+		System.out.println("Ma balise2");
+
+//		myBoxAttack[0] = new BoxAttack();
+//		myBoxAttack[1] = new BoxAttack();
+//		myBoxAttack[2] = new BoxAttack();
 
 		myHealingPotion[0] = new BoxHealingPotion();
 		myHealingPotion[1] = new BoxHealingPotion();
@@ -306,8 +312,8 @@ public static void gestionInventory(int numHero){
 
 		
 ///////////////Box weapon////////////////////////////////////////////////////////////////
-		for(int i = 0; i < 3; i++){
-			boolean shieldOk = false;
+		for(int i = 0; i < Weapon.getWeaponList().size(); i++){
+			boolean weaponOk = false;
 			int limiteBreak = 0;
 			do {
 				limiteBreak++;
@@ -316,25 +322,25 @@ public static void gestionInventory(int numHero){
 
 				if(Dedale.monDonjon.get(localisation).getClass().equals(Event.class)) {
 					Dedale.monDonjon.set(localisation, myBoxWeapon[i]);
-					shieldOk = true;
+					weaponOk = true;
 				}
-			}while(shieldOk != true);
+			}while(weaponOk != true);
 		}
-///////////////boxAttack////////////////////////////////////////////////////////////////
-		for(int i = 0; i < 3; i++){
-			boolean protecPotionOK = false;
-			int limiteBreak = 0;
-			do {
-				limiteBreak++;
-				int localisation = (int)(Math.random() * ((limitSquares - 1) + 1));
-				System.out.println("Je suis boxProtec n " +i + " a la place n "+localisation );
-
-				if(Dedale.monDonjon.get(localisation).getClass().equals(Event.class)) {
-					Dedale.monDonjon.set(localisation, myBoxAttack[i]);
-					protecPotionOK = true;
-				}
-			}while(protecPotionOK != true);
-		}
+/////////////////boxAttack////////////////////////////////////////////////////////////////
+//		for(int i = 0; i < 3; i++){
+//			boolean protecPotionOK = false;
+//			int limiteBreak = 0;
+//			do {
+//				limiteBreak++;
+//				int localisation = (int)(Math.random() * ((limitSquares - 1) + 1));
+//				System.out.println("Je suis boxProtec n " +i + " a la place n "+localisation );
+//
+//				if(Dedale.monDonjon.get(localisation).getClass().equals(Event.class)) {
+//					Dedale.monDonjon.set(localisation, myBoxAttack[i]);
+//					protecPotionOK = true;
+//				}
+//			}while(protecPotionOK != true);
+//		}
 
 ///////////////HEALING POTION////////////////////////////////////////////////////////////////
 	for(int i = 0; i < 2; i++){

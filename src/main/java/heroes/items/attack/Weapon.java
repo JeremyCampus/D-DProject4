@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Weapon extends AttackItem {
-
+	protected static List<Weapon> weaponList = new ArrayList();
+	
 	public Weapon() {
 		super();
 		type = "Weapon";
@@ -13,5 +14,13 @@ public class Weapon extends AttackItem {
 		guerrierUser = true;
 	}
 
-
+	public static void generateWeapons() {
+		weaponList.add(new Bow());
+		weaponList.add(new Mace());
+		weaponList.add(new Sword());
+	}
+	
+	public static List<Weapon> getWeaponList(){
+		return weaponList;
+	}
 }

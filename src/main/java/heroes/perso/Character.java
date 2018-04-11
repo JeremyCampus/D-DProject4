@@ -105,5 +105,7 @@ public abstract class Character {
 	
 	public void selectionnerSpell(){
 	}
-
+	public String whatItemAttack() {
+		return getName() + " utilise actuellement l'arme ";
+	}
 }

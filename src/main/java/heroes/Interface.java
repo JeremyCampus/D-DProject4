@@ -1,11 +1,14 @@
 package main.java.heroes;
 
+import main.java.heroes.items.*;
+import main.java.heroes.items.attack.*;
 import main.java.heroes.enemy.*;
 import main.java.heroes.supriseBoxes.*;
 import java.util.Scanner;
 
 public abstract class Interface extends Dedale{
 	public static int machin = 0;
+	private static Scanner sc = new Scanner(System.in);
 
 	public static void clearZone()
 	{
@@ -85,7 +88,7 @@ public abstract class Interface extends Dedale{
 		System.out.println("-VOUS ETES SUR LA CASE N " + getmySquare() + " -");
 		System.out.println("Afficher l'Inventaire? = 1");
 		System.out.println("Quel arme utilise le Hero actuellement ? = 2");
-		System.out.println(" = 3");
+		System.out.println("Changer l'arme qu'utilise le hero ? = 3");
 		System.out.println("Quitter = 4");
 		System.out.println("---");
 		System.out.println("");
@@ -122,4 +125,16 @@ public abstract class Interface extends Dedale{
 		System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
 		System.out.println("_____________________________________________________________________");
 			}
+	
+	protected static String menuListWeapon()
+	{
+		System.out.println("Commencer avec :"
+				+ " Bow = 1 "
+				+ " Mace = 2 "
+				+ " Sword = 3");
+		String newWeapon = "";
+		newWeapon = sc.nextLine();
+		return newWeapon;
+	}
+	
 }

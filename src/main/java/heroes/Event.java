@@ -6,10 +6,9 @@ public class Event {
 	protected static int type = 0;
 	protected static int typeEnnemi = 0;
 	protected static int typeCaisse = 0;
-	protected boolean eventFinished = false;
-
+	public boolean eventFinished = false;
+	
 	public Event() {
-		
 	}
 	
 	
@@ -21,5 +20,6 @@ public class Event {
 	
 	public void generateEvent() {
 		eventFinished = true;
+
 	}
 }

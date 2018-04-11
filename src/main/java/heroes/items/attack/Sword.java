@@ -10,6 +10,7 @@ public class Sword extends Weapon {
 		super();
 		type = "Sword";
 		attackLevel = 1;
+		int idWeapon = 2;
 	}
 	
 

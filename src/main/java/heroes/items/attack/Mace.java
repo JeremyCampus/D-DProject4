@@ -10,6 +10,7 @@ public class Mace extends Weapon {
 		super();
 		type = "Mace";
 		attackLevel = 1;
+		int idWeapon = 1;
 	}
 	
 

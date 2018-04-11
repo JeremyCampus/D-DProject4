@@ -10,7 +10,6 @@ public class Enemy extends Event{
 	public boolean combatMage = false;
 	public int protection = 1;
 	
-	
 	public Enemy() {
 		
 	}
@@ -19,5 +18,6 @@ public class Enemy extends Event{
 		return "Je suis : Enemy";
 	}
 	
-
+	public void generateEvent() {
+	}
 }

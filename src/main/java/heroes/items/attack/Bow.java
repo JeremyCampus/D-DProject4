@@ -10,7 +10,10 @@ public class Bow extends Weapon {
 		super();
 		type = "Bow";
 		attackLevel = 1;
+		int idWeapon = 0;
 	}
 	
-
+	public String toString() {
+		return type;
+	}
 }
