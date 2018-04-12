@@ -14,13 +14,13 @@ public class ProtectionPotion extends DefenseItem {
 		guerrierUser = true;
 	}
 
-	public static void generateShields() {
+	public static void generateProtectionPotions() {
 		protectionPotionList.add(new ProtectionPotion(2));
 		protectionPotionList.add(new ProtectionPotion(3));
 		protectionPotionList.add(new ProtectionPotion(5));
 	}
 	
-	public static List<Item> getprotectionPotionListList(){
+	public static List<Item> getProtectionPotionList(){
 		return protectionPotionList;
 	}
 

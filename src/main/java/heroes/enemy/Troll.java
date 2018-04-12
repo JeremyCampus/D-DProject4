@@ -5,8 +5,6 @@ public class Troll extends Enemy{
 	
 	public Troll(int newAge){
 		super();
-		combatGuerrier = true;
-		combatMage = true;
 		age = newAge;
 		damage = age;
 	}

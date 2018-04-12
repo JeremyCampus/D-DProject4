@@ -33,13 +33,10 @@ public class Mage extends Character{
 
 
 	public Mage(String myName, String newImage, int newLife, int newStrenght, String newSpell) {
-		System.out.println("BALISE2.1");
-
 		setName(myName);
 		setImage(newImage);
 		setLife(newLife);
 		setFA(newStrenght);
-		System.out.println("BALISE2.2");
 
 		switch(newSpell)
 		{           
@@ -58,7 +55,6 @@ public class Mage extends Character{
 		}
 		inventory.add(myAttackItem);
 		mettreAJour();
-		System.out.println("BALISE2.3");
 
 	}
 	

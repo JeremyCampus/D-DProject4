@@ -64,7 +64,6 @@ public class Guerrier extends Character{
 	}
 
 
-
 	public void setShield(boolean status){
 		
 	}

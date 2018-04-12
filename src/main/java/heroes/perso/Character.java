@@ -125,4 +125,10 @@ public abstract class Character {
 	public String whatItemAttack() {
 		return getName() + " utilise actuellement l'arme ";
 	}
+	
+
+	public String getMetier()
+	{
+		return metier;
+	}
 }

@@ -1,7 +1,7 @@
 package main.java.heroes.supriseBoxes;
 
 import main.java.heroes.items.attack.*;
-
+import main.java.heroes.perso.Guerrier;
 import main.java.heroes.*;
 import main.java.heroes.items.*;
 
@@ -19,7 +19,10 @@ public class BoxWeapon extends BoxAttack{
 	}
 	
 	public void generateEvent() {
-		Dedale.getListeHeroes().get(0).ajouterArmeSpell(myWeapon);
+		if(Dedale.getListeHeroes().get(0).getClass() == Guerrier.class)
+		{
+			Dedale.getListeHeroes().get(0).ajouterArmeSpell(myWeapon);
+		}
 		eventFinished = true;
 	}
 }

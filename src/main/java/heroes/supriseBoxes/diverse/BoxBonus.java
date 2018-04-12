@@ -1,3 +1,4 @@
+
 package main.java.heroes.supriseBoxes.diverse;
 
 import main.java.heroes.*;
