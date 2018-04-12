@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Weapon extends AttackItem {
-	protected static List<Weapon> weaponList = new ArrayList();
+	protected static List<Item> weaponList = new ArrayList();
 	
 	public Weapon() {
 		super();
@@ -20,7 +20,7 @@ public class Weapon extends AttackItem {
 		weaponList.add(new Sword());
 	}
 	
-	public static List<Weapon> getWeaponList(){
+	public static List<Item> getWeaponList(){
 		return weaponList;
 	}
 }

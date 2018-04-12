@@ -7,13 +7,22 @@ import java.util.List;
 import main.java.heroes.*;
 
 public class Spell extends AttackItem{
-
+	protected static List<Item> spellList = new ArrayList();
+	
 	public Spell() {
 		super();
-		type = "Spell";
+		type = "Weapon";
 		attackLevel = 1;
-		mageUser = true;
+		guerrierUser = true;
+	}
+
+	public static void generateSpells() {
+		spellList.add(new Thunder());
+		spellList.add(new Invisibility());
+		spellList.add(new WallOfFire());
 	}
 	
-
+	public static List<Item> getSpellList(){
+		return spellList;
+	}
 }

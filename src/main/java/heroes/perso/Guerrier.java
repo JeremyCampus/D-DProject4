@@ -8,15 +8,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.List;
 
-// import java.util.ListIterator;
 
 public class Guerrier extends Character{
-//	protected static List<Weapon> armament = new ArrayList<Weapon>();	
 
 	public Weapon myAttackItem = new Weapon();
 	public Shield myDefenseItem = new Shield(1);
 	protected int damages =  FA + myAttackItem.getItemAttackLevel();
-	protected boolean shield = false;
 	protected String metier = "Guerrier";
 	
 	
@@ -24,7 +21,6 @@ public class Guerrier extends Character{
 		super();
 		myAttackItem = new Bow();
 		inventory.add(myAttackItem);
-		
 	}
 
 
@@ -33,7 +29,7 @@ public class Guerrier extends Character{
 		name = myName;
 		myAttackItem = new Bow();
 		inventory.add(myAttackItem);
-		}
+	}
 
 
 	public Guerrier(String myName, String newImage, int newLife, int newStrenght, String newWeapon) {
@@ -45,19 +41,18 @@ public class Guerrier extends Character{
 		switch(newWeapon)
 		{           
 			case "2":
-				myAttackItem = Weapon.getWeaponList().get(1);
+				myAttackItem = (Weapon) Weapon.getWeaponList().get(1);
 				Weapon.getWeaponList().remove(1);
 				break;  
 			case "3":
-				myAttackItem = Weapon.getWeaponList().get(2);
+				myAttackItem = (Weapon) Weapon.getWeaponList().get(2);
 				Weapon.getWeaponList().remove(2);
 				break;        	 						  
 			default:
-				myAttackItem = Weapon.getWeaponList().get(0);
+				myAttackItem = (Weapon) Weapon.getWeaponList().get(0);
 				Weapon.getWeaponList().remove(0);
 				break; 
 		}
-		System.out.println("TEEEEEEST : " +Weapon.getWeaponList().size());
 		inventory.add(myAttackItem);
 		mettreAJour();
 	}
@@ -71,7 +66,7 @@ public class Guerrier extends Character{
 
 
 	public void setShield(boolean status){
-		shield = status;
+		
 	}
 
 
@@ -87,7 +82,7 @@ public class Guerrier extends Character{
 		+ "\nYour Image : " + image 
 		+"\nYour Life : " + life +" --- "
 		 +"\nYour weapon is " + myAttackItem + " who deliver " + myAttackItem.getItemAttackLevel() + " damages."
-		 +"\nYour shield : " + shield
+		 +"\nYour shield : " + myDefenseItem
 		 +"\nYour inventory has " + inventory.size() + " Weapons."	
 		 +"\n"
 		 +"\n_________________________________________";
@@ -111,9 +106,14 @@ public class Guerrier extends Character{
 	}
 	
 	
-	public void ajouterArmeSpell(Weapon myWeapon){
-		myAttackItem = myWeapon;
+	public void ajouterArmeSpell(AttackItem myWeapon){
+		myAttackItem = (Weapon) myWeapon;
 		inventory.add(myAttackItem);
+	}
+	
+	public void ajouterProtection(DefenseItem myShield){
+		myDefenseItem = (Shield) myShield;
+		protectionInventory.add(myDefenseItem);
 	}
 
 

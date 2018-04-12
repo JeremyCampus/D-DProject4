@@ -10,13 +10,8 @@ public class BoxWeapon extends BoxAttack{
 	protected Weapon myWeapon= new Weapon();
 	
 	
-	public BoxWeapon(int monNum) {
-		System.out.println("Ma balise1");
-
-		myWeapon = Weapon.getWeaponList().get(monNum);
-
-		System.out.println("Ma balise1.1");
-
+	public BoxWeapon(Item newWeapon) {
+		myWeapon = (Weapon) newWeapon;
 	}
 	
 	public String afficher() {

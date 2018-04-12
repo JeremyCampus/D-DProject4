@@ -9,6 +9,7 @@ import main.java.heroes.items.defense.*;
 
 public abstract class Character {
 	protected static List<Item> inventory = new ArrayList<Item>();	
+	protected static List<Item> protectionInventory = new ArrayList<Item>();	
 	protected String name = "Peasant";
 	protected String image  = "X";
 	protected int life = 1 + (int)(Math.random() * ((100 - 1) + 1));
@@ -29,7 +30,22 @@ public abstract class Character {
 		damages = FA;
 	}
 
-
+	public String healing() {
+		if(nbHealingPotion>0)
+		{
+			
+			int heal =(int)(Math.random() * ((50 - 25) + 1))  + 25;
+			setLife(getLife() + heal);
+			if(getLife() > 100)
+			{
+				setLife(100);
+			}
+			nbHealingPotion--;
+			return "Vous etes soigne de :" + heal + "points de vie.\n Vous avez : " + getLife() + " Points de vie.";
+		}else {
+			return "plus de potion disponible !\n Vous avez : " + getLife() + " Points de vie.";
+		}
+	}
 
 	public String getName(){
 		return name;
@@ -88,10 +104,11 @@ public abstract class Character {
 
 	public void ajouterArmeSpell(){
 	}
-	public void ajouterArmeSpell(Weapon myWeapon){
+	public void ajouterArmeSpell(AttackItem myWeapon){
 	}
+
 	
-	public void ajouterArmeSpell(Spell mySpell){
+	public void ajouterProtection(DefenseItem myProtection){
 	}
 
 	public void afficherInventory(){
