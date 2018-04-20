@@ -13,7 +13,7 @@ public class BoxHealingPotion extends Box {
 	}
 	
 	public void generateEvent() {
-		Dedale.getListeHeroes().get(0).nbHealingPotion++;
+		Dedale.myGame.getListeHeroes().get(0).nbHealingPotion++;
 		eventFinished = true;
 	}
 

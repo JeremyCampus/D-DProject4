@@ -15,13 +15,13 @@ public class Sorcerer extends Enemy{
 	}
 
 	public void generateEvent() {
-		if(Dedale.getListeHeroes().get(0).getMetier() == "Mage")
+		if(Dedale.myGame.getListeHeroes().get(0).getMetier() == 2)
 		{
-			Dedale.getListeHeroes().get(0).getDamages();
+			Dedale.myGame.getListeHeroes().get(0).getDamages();
 			System.out.println(afficher() + " a été tué.");
 			eventFinished = true;
 			
-			Dedale.getListeHeroes().get(0).setLife(Dedale.getListeHeroes().get(0).getLife()-damage);
+			Dedale.myGame.getListeHeroes().get(0).setLife(Dedale.myGame.getListeHeroes().get(0).getLife()-damage);
 				System.out.println("Vous Avez été tué.");
 				eventFinished = true;
 				

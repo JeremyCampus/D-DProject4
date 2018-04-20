@@ -23,9 +23,9 @@ public class BoxShield extends BoxDefense{
 	}
 	
 	public void generateEvent() {
-		if(Dedale.getListeHeroes().get(0).getClass() == Guerrier.class)
+		if(Dedale.myGame.getListeHeroes().get(0).getClass() == Guerrier.class)
 		{
-			Dedale.getListeHeroes().get(0).ajouterProtection(myShield);
+			Dedale.myGame.getListeHeroes().get(0).ajouterProtection(myShield);
 		}
 		eventFinished = true;
 	}

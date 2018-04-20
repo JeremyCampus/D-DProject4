@@ -20,20 +20,22 @@ public abstract class Interface extends Dedale{
 	}
 	
 	public static void menuPrincipal() {
+		
 		Interface.clearZone();		  
 		Scanner sc = new Scanner(System.in);
 		boolean quitter = false;	
 			do{
-				if(mySquare < limitSquares ){
-					if(!Dedale.monDonjon.get(mySquare).eventFinished)
+				int thisSquare = Dedale.myGame.listeHeroes.get(0).getMySquare();
+				if(thisSquare < Dedale.myGame.limitSquares ){
+					if(!Dedale.myGame.monDonjon.get(Dedale.myGame.listeHeroes.get(0).getMySquare()).eventFinished)
 					{
-						if(Dedale.monDonjon.get(mySquare) instanceof Enemy) {
+						if(Dedale.myGame.monDonjon.get(Dedale.myGame.listeHeroes.get(0).getMySquare()) instanceof Enemy) {
 							System.out.println("---");
-							System.out.println("Vous etes chez un ennemi, prudence... : " + Dedale.monDonjon.get(mySquare).afficher());
+							System.out.println("Vous etes chez un ennemi, prudence... : " + Dedale.myGame.monDonjon.get(Dedale.myGame.listeHeroes.get(0).getMySquare()).afficher());
 						}
-						if(Dedale.monDonjon.get(mySquare) instanceof Box) {
+						if(Dedale.myGame.monDonjon.get(Dedale.myGame.listeHeroes.get(0).getMySquare()) instanceof Box) {
 							System.out.println("---");
-							System.out.println("Vous appercevez un étrange coffre au loin ! " + Dedale.monDonjon.get(mySquare).afficher());
+							System.out.println("Vous appercevez un étrange coffre au loin ! " + Dedale.myGame.monDonjon.get(Dedale.myGame.listeHeroes.get(0).getMySquare()).afficher());
 						}
 					}else {
 						System.out.println("Evenement terminé, continuez d'avancer ! ");
@@ -43,13 +45,13 @@ public abstract class Interface extends Dedale{
 					System.out.println("_____________________________________________________________________");
 					System.out.println("|||||||||||||||||||||| QUE VOULEZ VOUS FAIRE ? ||||||||||||||||||||||");
 					System.out.println("_____________________________________________________________________");
-					System.out.println("-VOUS ETES SUR LA CASE N " + getmySquare() + " -");
+					System.out.println("-VOUS ETES SUR LA CASE N " + Dedale.myGame.listeHeroes.get(0).getMySquare() + " -");
 					System.out.println("---");
 					System.out.println("Afficher le personnages ? = 1");
 					System.out.println("Selectionner un personnage ? = 2");
-					System.out.println("Vous soigner ? ( " + listeHeroes.get(0).getNbHealingPotion() + " potions restante(s)) = 3");
+					System.out.println("Vous soigner ? ( " + Dedale.myGame.listeHeroes.get(0).getNbHealingPotion() + " potions restante(s)) = 3");
 					
-					if(Dedale.monDonjon.get(mySquare).getClass().equals(Event.class)||Dedale.monDonjon.get(mySquare).eventFinished)
+					if(Dedale.myGame.monDonjon.get(thisSquare).getClass().equals(Event.class)||Dedale.myGame.monDonjon.get(thisSquare).eventFinished)
 					{
 						System.out.println("Vous deplacer ? = 4");
 					}else {
@@ -71,8 +73,8 @@ public abstract class Interface extends Dedale{
 							case "1":
 									System.out.println("");
 									System.out.println("");
-									System.out.println("Voici le hero : " + listeHeroes.get(0).getName());
-									System.out.println(listeHeroes.get(0));
+									System.out.println("Voici le hero : " + Dedale.myGame.listeHeroes.get(0).getName());
+									System.out.println(Dedale.myGame.listeHeroes.get(0));
 								break;        
 							case "2":
 								try {
@@ -83,18 +85,18 @@ public abstract class Interface extends Dedale{
 								break;  
 							case "3":
 								System.out.println("test");
-								System.out.println(Dedale.listeHeroes.get(0).healing());
+								System.out.println(Dedale.myGame.listeHeroes.get(0).healing());
 								break;       
 							case "4":
-								if(Dedale.monDonjon.get(mySquare).getClass().equals(Event.class))
+								if(Dedale.myGame.monDonjon.get(thisSquare).getClass().equals(Event.class))
 								{
-									Dedale.monDonjon.get(mySquare).eventFinished = true;
+									Dedale.myGame.monDonjon.get(thisSquare).eventFinished = true;
 								}
-								if(Dedale.monDonjon.get(mySquare).eventFinished)
+								if(Dedale.myGame.monDonjon.get(thisSquare).eventFinished)
 								{
-									move();
+									Dedale.myGame.listeHeroes.get(0).move();
 								}else {
-									Dedale.monDonjon.get(mySquare).generateEvent();
+									Dedale.myGame.monDonjon.get(thisSquare).generateEvent();
 								}
 								break;   
 							case "5":
@@ -124,7 +126,7 @@ public abstract class Interface extends Dedale{
 		Interface.clearZone();		  
 		do{
 			System.out.println("");
-			System.out.println("Gestion du hero : " + listeHeroes.get(0).getName());
+			System.out.println("Gestion du hero : " + Dedale.myGame.listeHeroes.get(0).getName());
 			System.out.println("_____________________________________________________________________");
 			System.out.println("|||||||||||||||||||||| QUE VOULEZ VOUS FAIRE ? ||||||||||||||||||||||");
 			System.out.println("_____________________________________________________________________");
@@ -140,19 +142,19 @@ public abstract class Interface extends Dedale{
 			System.out.println("_____________________________________________________________________");
 			System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
 			System.out.println("_____________________________________________________________________");
-			listeHeroes.get(0).mettreAJour();
+			Dedale.myGame.listeHeroes.get(0).mettreAJour();
 			String str2 = sc.nextLine();
 			Interface.clearZone();
 			switch (str2)
 			{
 				case "1":
-					System.out.println(listeHeroes.get(0));			  
+					System.out.println(Dedale.myGame.listeHeroes.get(0));			  
 					break;               
 				case "2":
-					listeHeroes.get(0).afficherInventory();			  
+					Dedale.myGame.listeHeroes.get(0).afficherInventory();			  
 					break;
 				case "3":
-					Dedale.gestionInventory(0);	
+					Dedale.myGame.gestionInventory(0);	
 					break;       
 				case "4":
 					exit = true;
@@ -174,9 +176,9 @@ public abstract class Interface extends Dedale{
 			System.out.println("");
 			System.out.println("");
 			System.out.println("_____________________________________________________________________");
-			System.out.println("|||||||||||||||||||||| INVENTAIRE DE "+ listeHeroes.get(0).getName() +" ||||||||||||||||||||||");
+			System.out.println("|||||||||||||||||||||| INVENTAIRE DE "+ Dedale.myGame.listeHeroes.get(0).getName() +" ||||||||||||||||||||||");
 			System.out.println("_____________________________________________________________________");
-			System.out.println("-VOUS ETES SUR LA CASE N " + getmySquare() + " -");
+			System.out.println("-VOUS ETES SUR LA CASE N " + Dedale.myGame.listeHeroes.get(0).getMySquare() + " -");
 			System.out.println("Afficher l'Inventaire? = 1");
 			System.out.println("Quel arme utilise le Hero actuellement ? = 2");
 			System.out.println("Changer l'arme qu'utilise le hero ? = 3");
@@ -195,13 +197,13 @@ public abstract class Interface extends Dedale{
 			switch (str2)
 			{
 				case "1":
-					listeHeroes.get(0).afficherInventory();
+					Dedale.myGame.listeHeroes.get(0).afficherInventory();
 					break;            
 				case "2":
-					System.out.println(listeHeroes.get(0).whatItemAttack());
+					System.out.println(Dedale.myGame.listeHeroes.get(0).whatItemAttack());
 					break;  
 				case "3":
-					listeHeroes.get(0).selectionnerArme();
+					Dedale.myGame.listeHeroes.get(0).selectionnerArme();
 					break;        	
 				case "4":
 					quitter = true;
@@ -227,7 +229,7 @@ public abstract class Interface extends Dedale{
 			System.out.println("Changer Case ? = 1");
 			System.out.println("Afficher tout = 2");
 			System.out.println("//Ajouter Arme Hero ? = 3");
-			System.out.println("Ajouter Potion ? = 4 ==> "+ listeHeroes.get(0).getNbHealingPotion() + " potions restante(s))");
+			System.out.println("Ajouter Potion ? = 4 ==> "+ Dedale.myGame.listeHeroes.get(0).getNbHealingPotion() + " potions restante(s))");
 			System.out.println("Quitter = 5");
 			System.out.println("---");
 			System.out.println("");
@@ -244,11 +246,11 @@ public abstract class Interface extends Dedale{
 			{        
 				case "1":
 					int str4 = sc.nextInt();
-					Dedale.setmySquare(str4);
+					Dedale.myGame.listeHeroes.get(0).setMySquare(str4);
 					break;
 				case "2":
-					for(int i = 0; i <= limitSquares; i++){
-						System.out.println(Dedale.monDonjon.get(i).afficher() + " " + i);
+					for(int i = 0; i <= Dedale.myGame.limitSquares ; i++){
+						System.out.println(Dedale.myGame.monDonjon.get(i).afficher() + " " + i);
 					}
 					break;
 				case "4":

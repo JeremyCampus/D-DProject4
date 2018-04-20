@@ -14,7 +14,7 @@ public class Guerrier extends Character{
 	public Weapon myAttackItem = new Weapon();
 	public Shield myDefenseItem = new Shield(1);
 	protected int damages =  FA + myAttackItem.getItemAttackLevel();
-	protected String metier = "Guerrier";
+	protected int metier = 1;
 	
 	
 	public Guerrier() {

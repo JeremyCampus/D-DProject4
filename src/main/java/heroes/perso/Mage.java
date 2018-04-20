@@ -14,7 +14,7 @@ public class Mage extends Character{
 	public Spell myAttackItem = new Spell();
 	public ProtectionPotion myDefenseItem = new ProtectionPotion(1);
 	protected int damages =  FA + myAttackItem.getItemAttackLevel();
-	protected String metier = "Mage";
+	protected int metier = 2;
 	
 	
 	public Mage() {

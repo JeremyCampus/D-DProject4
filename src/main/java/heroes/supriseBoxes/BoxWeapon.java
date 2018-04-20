@@ -19,9 +19,9 @@ public class BoxWeapon extends BoxAttack{
 	}
 	
 	public void generateEvent() {
-		if(Dedale.getListeHeroes().get(0).getClass() == Guerrier.class)
+		if(Dedale.myGame.getListeHeroes().get(0).getClass() == Guerrier.class)
 		{
-			Dedale.getListeHeroes().get(0).ajouterArmeSpell(myWeapon);
+			Dedale.myGame.getListeHeroes().get(0).ajouterArmeSpell(myWeapon);
 		}
 		eventFinished = true;
 	}

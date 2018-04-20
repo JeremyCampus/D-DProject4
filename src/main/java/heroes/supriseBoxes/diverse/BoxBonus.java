@@ -19,13 +19,13 @@ public class BoxBonus extends Box {
 		switch(myTypeBonus)
 		{           
 			case 1:
-				Dedale.setmySquare(Dedale.getmySquare()-5);
+				Dedale.myGame.getListeHeroes().get(0).setMySquare(Dedale.myGame.getListeHeroes().get(0).getMySquare() - 5);
 				break;  
 			case 2:
-				Dedale.setmySquare(Dedale.getmySquare()+5);
+				Dedale.myGame.getListeHeroes().get(0).setMySquare(Dedale.myGame.getListeHeroes().get(0).getMySquare() + 5);
 				break;       
 			default:
-				Dedale.setmySquare(Dedale.getmySquare()+0);
+				Dedale.myGame.getListeHeroes().get(0).setMySquare(Dedale.myGame.getListeHeroes().get(0).getMySquare() + 0);
 				break; 
 		}
 		eventFinished = true;

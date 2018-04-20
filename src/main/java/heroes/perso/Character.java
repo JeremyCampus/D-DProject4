@@ -8,8 +8,8 @@ import main.java.heroes.items.attack.*;
 import main.java.heroes.items.defense.*;
 
 public abstract class Character {
-	protected static List<Item> inventory = new ArrayList<Item>();	
-	protected static List<Item> protectionInventory = new ArrayList<Item>();	
+	protected  List<Item> inventory = new ArrayList<Item>();	
+	protected  List<Item> protectionInventory = new ArrayList<Item>();	
 	protected String name = "Peasant";
 	protected String image  = "X";
 	protected int life = 1 + (int)(Math.random() * ((100 - 1) + 1));
@@ -17,11 +17,11 @@ public abstract class Character {
 	public int nbHealingPotion = 3;
 	protected int FA = 1; 
 	protected int damages = FA;
-	protected String metier = "Peasant";
+	protected int metier = 0;
 	public AttackItem myAttackItem = new AttackItem();
 	public DefenseItem myDefenseItem = new DefenseItem();
+	protected int mySquare = 0;
 
-	
 	public Character() {
 	}
 
@@ -97,7 +97,14 @@ public abstract class Character {
 		 +"_________________________________________";
 	}
 
+	public int getMySquare() {
+		return mySquare;
+	}
 
+	
+	public void setMySquare(int newSquare) {
+		mySquare = newSquare;
+	}
 
 
 	
@@ -127,8 +134,17 @@ public abstract class Character {
 	}
 	
 
-	public String getMetier()
+	public int getMetier()
 	{
 		return metier;
 	}
+	
+	
+//////////MOVE/////////////////
+public void move()
+{
+	int deplacement = 0;
+	deplacement = getMySquare() + 1 + (int)(Math.random() * ((6 - 1) + 1));
+	setMySquare(deplacement);
+}
 }

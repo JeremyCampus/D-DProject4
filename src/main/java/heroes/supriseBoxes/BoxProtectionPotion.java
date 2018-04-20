@@ -20,9 +20,9 @@ public class BoxProtectionPotion extends BoxDefense{
 	}
 	
 	public void generateEvent() {
-		if(Dedale.getListeHeroes().get(0).getClass() == Mage.class)
+		if(Dedale.myGame.getListeHeroes().get(0).getClass() == Mage.class)
 		{
-			Dedale.getListeHeroes().get(0).ajouterProtection(myProtectionPotion);
+			Dedale.myGame.getListeHeroes().get(0).ajouterProtection(myProtectionPotion);
 		}
 		eventFinished = true;
 

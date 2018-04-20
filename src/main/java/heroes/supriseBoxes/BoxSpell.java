@@ -20,9 +20,9 @@ public class BoxSpell extends BoxAttack{
 	}
 	
 	public void generateEvent() {
-		if(Dedale.getListeHeroes().get(0).getClass() == Mage.class)
+		if(Dedale.myGame.getListeHeroes().get(0).getClass() == Mage.class)
 		{
-			Dedale.getListeHeroes().get(0).ajouterArmeSpell(mySpell);
+			Dedale.myGame.getListeHeroes().get(0).ajouterArmeSpell(mySpell);
 		}
 		eventFinished = true;
 	}
